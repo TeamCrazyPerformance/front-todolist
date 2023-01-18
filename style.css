@@ -1,0 +1,95 @@
+#name {
+    position: absolute;
+    height: 46px;
+    width: 375px;
+    background: #2C2C2C;
+}
+
+#title {
+    position: absolute;
+    width: 128px;
+    height: 29px;
+    left: 11px;
+    top: 9px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+#btnPlus {
+    position: absolute;
+    width: 25px;
+    height: 46px;
+    left: 335px;
+    top: -2px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+
+    border-radius: 50%;
+}
+
+#addSchedule {
+    position: absolute;
+    width: 375px;
+    height: 75px;
+    left: 0px;
+    top: 46px;
+
+    background: #2C2C2C;
+}
+
+#addTitle {
+    position: absolute;
+    width: 78px;
+    height: 19px;
+    left: 11px;
+    top: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+}
+
+input {
+    position: absolute;
+    width: 214px;
+    height: 25px;
+    left: 11px;
+    top: 81px;
+
+    background: #F5F5F5;
+}
+
+.btnAddOrCancel {
+    position: absolute;
+    width: 30px;
+    height: 19px;
+    left: 258px;
+    top: 85px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #FFFFFF;
+}
