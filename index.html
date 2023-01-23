@@ -5,30 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!--style.css 파일 참조하기-->
     <title>ToDo List</title>
 </head>
+
 
 <body>
     <header style="position: fixed; background: #2C2C2C;">
         <h1 id="title">
-            <div>TODO LIST </div>
-            <div style="border-color: white; border: 10px; border-radius: 50%;">+</div>
+            <span>TODO LIST </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button id="plus">+</button>
         </h1>
         <div id="newSchedule">
-            <h3>새로운 일정</h3>
-            <input id="inputField" type="text">
-            <div class="to-dos" id="toDoList"> </div>
-            <button id="add"> 추가 </button>
-            <button id="cancel"> 취소 </button>
-        </div>
-    </header>
-    <div class="main">
+            <h3 id="text">새로운 일정</h3>
+            <div class="inputField" id="input">
+                <input type="text" id="addValue" placeholder="할 일 추가하기" />
+                <button type="button" id="add" onclick="addTodo()">추가</button>
+                <button type="button" id="cancel" onclick="cancelTodo()">취소</button>
 
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="main">
+        <span id="noschedule">남은 일정이 없어요</span>
+        <button id="addToDo"> 버튼버튼 </button>
+        <h1 class="to-dos" id="toDoList"> </h1>
 
 
     </div>
 
 </body>
+<script src="main.js">
+</script>
 
 </html>
