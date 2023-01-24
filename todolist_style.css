@@ -15,8 +15,9 @@ html, body {
     background: #2C2C2C;
     color: #FFFFFF;
 }
-.todoLogo{
-    color:#FFFFFF;
+
+.todo-logo {
+    color: #FFFFFF;
     font-size: 30px;
     font-weight: bold;
 }
@@ -28,39 +29,75 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
-.plusButton{
+
+#todo-form {
+    margin-left: 2%;
     margin-right: 2%;
-    width:30px;
-    height:30px;
-    padding:0;
+    font-weight: bold;
+    display: none;
+}
+
+#plus-button {
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
-.AddCancleBtn{
-    background-color:  #2C2C2C;;
-    color:#FFFFFF;
+.input-line {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-cancel-btn {
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #2C2C2C;
+    color: #FFFFFF;
     border-radius: 10px;
-    border-color:#FFFFFF;
+    border-color: #FFFFFF;
     cursor: pointer;
 }
-.emptyNotice{
-    margin:0;
-    flex:1;
+
+#empty-notice {
+    margin: 0;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    font-size:50px;
-    color:#C2C2C2;
+    font-size: 50px;
+    color: #C2C2C2;
 }
-.TODOobj{
-    display:flex;
-    flex-direction:row;
+
+.todo {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-left:2%;
-    padding-right:2%;
-    border-style:solid;
-    border-width:0px 0px 1px 0px;
-    border-Bottom-color:#2C2C2C;
+    padding: 1rem;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-Bottom-color: #2C2C2C;
+}
+
+.todo-text {
+    font-size: 20px;
+}
+
+.delete-button {
+    cursor: pointer;
+    border: none;
+    background: #FFFFFF;
+}
+
+#new-schedule {
+    padding-bottom: 10px;
 }
