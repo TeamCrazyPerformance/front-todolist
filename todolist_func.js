@@ -1,39 +1,86 @@
-function toggleDiv(){
-    const div = document.getElementById('inputBlock');
-    if(div.style.display === 'none')  {
-        div.style.display = 'block';
-      }else {
-        div.style.display = 'none';
-      }
-}
-    
-    let TODOnum=0;
-function createDiv(){
-    let schedule= document.getElementById('schedule').value;
-    emptyNotice=document.getElementById('emptyNotice');
-    if(schedule!=''){
-        obj= document.getElementById("div1");
-        let div=document.createElement('div');
-        div.className="TODOobj"
-        div.innerHTML ="<h1 style='font-size: 20px'>"+schedule+"</h1>"+"<input type='button' value='x' onclick='removeSchedule(this)' style=' cursor: pointer; border : none; background:#FFFFFF'>"
-        obj.appendChild(div);
-        if(TODOnum==0){
-            emptyNotice.remove();
-        }
-        TODOnum++;
-        document.getElementById("schedule").value ='';
+const emptyNotice = document.getElementById('empty-notice');
+const plusButton = document.getElementById('plus-button');
+let todoNum = 0;
+
+function toggleCreateTodoForm() {
+    const createTodoForm = document.getElementById('todo-form');
+
+    if (createTodoForm.style.display === 'block') {
+        createTodoForm.style.display = 'none';
+        visiblePlusImage()
+    } else {
+        createTodoForm.style.display = 'block';
+        invisiblePlusImage()
     }
 }
 
-function removeSchedule(obj) {
-	obj.parentElement.remove();
-    TODOnum--;
-    if(TODOnum==0){
-        obj= document.getElementById("div1");
-        let div=document.createElement('div');
-        div.id='emptyNotice';
-        div.className="emptyNotice";
-        div.innerHTML ="남은 일정이 없어요."
-        obj.appendChild(div);
+function createTodo() {
+    const todoContentElement = document.getElementById('todo-content');
+    todoContent = todoContentElement.value;
+    if (todoContent === '') {
+        window.alert("내용을 입력해주세요");
+        return;
     }
+
+    const todo = createTodoElement(todoContent);
+    appendTodo(todo);
+    todoNum++;
+
+    if (!isTodoListEmpty()) {
+        removeEmptyNotice();
+    }
+
+    clearTodoContent(todoContentElement);
+    toggleCreateTodoForm()
+    visiblePlusImage();
+
+
+    function createTodoElement(todoContent) {
+        const todo = document.createElement('div');
+        todo.className = "todo";
+        todo.innerHTML =
+            `<div class='todo-text'>${todoContent}</div>
+            <button class='delete-button' onclick='removeSchedule(this)'>x</button>`;
+        return todo;
+    }
+
+    function appendTodo(todo) {
+        const todoContainer = document.getElementById("todo-container");
+        todoContainer.appendChild(todo);
+    }
+
+    function clearTodoContent(todoContentElement) {
+        todoContentElement.value = '';
+    }
+
+    function removeEmptyNotice() {
+        emptyNotice.style.display = 'none';
+    }
+
+}
+
+function removeSchedule(deleteButton) {
+    deleteButton.parentElement.remove();
+    todoNum--;
+
+    if (isTodoListEmpty()) {
+        showEmptyNotice();
+    }
+
+    function showEmptyNotice() {
+        emptyNotice.style.display = 'flex';
+    }
+}
+
+function isTodoListEmpty() {
+    return todoNum === 0;
+}
+
+
+function invisiblePlusImage() {
+    plusButton.style.display = 'none';
+}
+
+function visiblePlusImage() {
+    plusButton.style.display = 'block';
 }
