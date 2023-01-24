@@ -1,0 +1,64 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200&display=swap');
+
+html, body {
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#head{
+    background: #2C2C2C;
+    color:#FFFFFF;
+    
+}
+.todoLogo{
+    color:#FFFFFF;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.container{
+    padding:10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.plusButton{
+    margin-right: 2%;
+    width:30px;
+    height:30px;
+    padding:0;
+    cursor: pointer;
+}
+
+.AddCancleBtn{
+    background-color:  #2C2C2C;;
+    color:#FFFFFF;
+    border-radius: 10px;
+    border-color:#FFFFFF;
+    cursor: pointer;
+}
+.emptyNotice{
+    margin:0;
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size:50px;
+    color:#C2C2C2;
+}
+.TODOobj{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left:2%;
+    padding-right:2%;
+    border-style:solid;
+    border-width:0px 0px 1px 0px;
+    border-Bottom-color:#2C2C2C;
+}

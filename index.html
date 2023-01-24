@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <script type="text/javascript" src="todolist_func.js"></script>
+    <link href="todolist_style.css" rel="stylesheet" type="text/css" />
     <meta charset="UTF-8" />
     <title>To Do List</title>
   </head>
 
-  <body>
-    <header>TODO LIST</header>
+  <body id="div1" style="width:100%; height:100%">
+    <div id="head">
+      <div class="container">
+        <div class="todoLogo">TODO LIST</div>
+        <input type='image' class="plusButton" src="image\plusbutton.png" onclick='toggleDiv()'>
+      </div>
+      <div id="inputBlock" style="margin-left: 2%; display:none; font-weight:bold;">
+        새로운 일정
+        <div style="padding-bottom: 10px;">
+          <input type="text" id="schedule" name="schedule">
+          <input type='button' class="AddCancleBtn" value="추가" onclick='createDiv(),toggleDiv()'>
+          <input type='button' class="AddCancleBtn" value="취소" onclick='toggleDiv()'>
+        </div>
+      </div>
+    </div>
+   <div id="emptyNotice"class="emptyNotice">남은 일정이 없어요</div> 
   </body>
+
 </html>
