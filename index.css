@@ -1,0 +1,121 @@
+body {
+    width: 50%;
+    height: 90%;
+    border: 1px solid black;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    color: black;
+}
+
+h1 {
+    margin: 5px;
+    display: inline-block;
+}
+
+button {
+    color: white;
+    border-color: white;
+}
+
+ul {
+    height: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: auto;
+    margin: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    background-color: #2C2C2C;
+    color: white;
+    z-index: 100;
+}
+
+.title {
+    padding: 1px;
+    align-items: center;
+}
+
+.add-btn {
+    position: absolute;
+    right:0;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    background-color: red;
+    border: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.add-todo {
+    margin: 0 10px 10px;
+}
+
+
+.group-btn {
+    background-color: black;
+}
+
+.input {
+    display: inline-block;
+}
+
+.btn-container {
+    display: inline-block;
+}
+
+.list-container {
+    min-height: 850px;
+    height: auto;
+    margin-top: 55px;
+    padding: 0;
+    text-align: center;
+    color: #D1D1D1;
+    align-items: center;
+}
+
+.todo-list {
+    position: relative;
+    height: 50px;
+    border: 1px solid #EAEAEA;
+    padding: 10px;
+    margin: 0;
+}
+.delete-btn {
+    position: absolute;
+    top:25px;
+    right: 5px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: black;
+    margin: 0;
+    font-size: 18px;
+}
+.todo-text {
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top:20px;
+    color: black;
+    margin: 0;
+    font-weight: normal;
+}
+
+.default-text {  
+    height: 400px;
+    padding-top: 50%;
+}

@@ -2,10 +2,30 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
     <title>To Do List</title>
   </head>
 
-  <body>
-    <header>TODO LIST</header>
+  <body class="body">
+      <div class="header">
+        <div class="title">
+          <h1>TODO LIST</h1>
+          <button class="add-btn" onclick="toggleVisibility()">
+            +
+          </button>
+        </div>
+        <div hidden="true" id="add-todo" class="add-todo">
+          <p style="display: block;">새로운 일정</p>
+          <input type="text" id="input" class="input"/>
+          <div class="btn-container">
+            <button id="complete-add-btn" class="group-btn" onclick="addTodo()">추가</button>
+            <button id="cancel-btn" class="group-btn" onclick="cancel()">취소</button>
+          </div>
+        </div>
+      </div>
+      <div id="list-container" class="list-container">
+        <p id="default-text" class="default-text">남은 일정이 없어요</p>
+      </div>
   </body>
 </html>
