@@ -2,42 +2,34 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>ToDo List</title>
+    <link href="todolist_style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8" />
+    <title>To Do List</title>
 </head>
 
-
 <body>
-    <header style="position: fixed; background: #2C2C2C;">
-        <h1 id="title">
-            <span>TODO LIST </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <button id="plus">+</button>
-        </h1>
-        <div id="newSchedule">
-            <h3 id="text">새로운 일정</h3>
-            <div class="inputField" id="input">
-                <input type="text" id="addValue" placeholder="할 일 추가하기" />
-                <button type="button" id="add" onclick="addTodo()">추가</button>
-                <button type="button" id="cancel" onclick="cancelTodo()">취소</button>
-
-            </div>
-
+    <header id="head">
+        <div class="container">
+            <div class="todo-logo">TODO LIST</div>
+            <img id="plus-button" src="image\plusbutton.png" onclick="toggleCreateTodoForm()">
         </div>
-
+        <div id="todo-form">
+            <div id="new-schedule">새로운 일정</div>
+            <div class='input-line'>
+                <input type="text" id="todo-content">
+                <div class='button-group'>
+                    <input type='button' class="add-cancel-btn" value="추가" onclick='createTodo()'>
+                    <input type='button' class="add-cancel-btn" value="취소" onclick='toggleCreateTodoForm()'>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="main">
-        <span id="noschedule">남은 일정이 없어요</span>
-        <button id="addToDo"> 버튼버튼 </button>
-        <h1 class="to-dos" id="toDoList"> </h1>
+    <div id="empty-notice">남은 일정이 없어요</div>
 
+    <div id="todo-container"></div>
 
-    </div>
-
+    <script type=" text/javascript " src="todolist_func.js "></script>
 </body>
-<script src="main.js">
-</script>
 
 </html>
