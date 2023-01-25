@@ -2,10 +2,31 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-
+  
   <body>
-    <header>TODO LIST</header>
+    <header>
+        <span id="title">TODO LIST</span>
+        <button id="btnPlus">+</button>
+    </header>
+
+    <div id="addScheduleContainer">
+      <span id="addTitle">새로운 일정</span>
+      <div id="scheduleTextAndButtonContainer">
+        <input type="text" id="scheduleInput">
+        <button class="btnAddOrCancel" id="addBtn">추가</button>
+        <button class="btnAddOrCancel" id="cancelBtn">취소</button>
+      </div>
+    </div>
+
+    <div id="container">
+      <span id="noScheduleMessage">남은 일정이 없어요</span>
+    </div>
   </body>
+
+  <script src="script.js"></script>
+
 </html>
