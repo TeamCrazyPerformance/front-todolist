@@ -9,29 +9,30 @@
 </head>
 
 <body>
-    <header id="head">
-        <div class="container">
-            <div class="todo-logo">TODO LIST</div>
-            <button id="plus-button" onclick="toggleCreateTodoForm()">
-                <img style="max-width:100%; max-height: 100%" src="image\plusbutton.png">
-            </button>
-        </div>
-        <div id="todo-form">
-            <div id="new-todo">새로운 일정</div>
-            <div class="input-line">
-                <input type="text" id="todo-content">
-                <div class="button-group">
-                    <button class="add-cancel-btn" onclick="createTodo()">추가</button>
-                    <button class="add-cancel-btn" onclick="toggleCreateTodoForm()">취소</button>
+    <div class="box">
+        <header id="head">
+            <div class="container">
+                <div class="todo-logo">TODO LIST</div>
+                <button id="plus-button" onclick="toggleCreateTodoForm()">
+                    <img style="max-width:100%; max-height: 100%" src="image\plusbutton.png">
+                </button>
+            </div>
+            <div id="todo-form">
+                <div id="new-todo">새로운 일정</div>
+                <div class="input-line">
+                    <input type="text" id="todo-content">
+                    <div class="button-group">
+                        <button class="add-cancel-btn" onclick="createTodo()">추가</button>
+                        <button class="add-cancel-btn" onclick="toggleCreateTodoForm()">취소</button>
+                    </div>
                 </div>
             </div>
+        </header>
+
+        <div id="todo-container">
+            <div id="empty-notice">남은 일정이 없어요</div>
         </div>
-    </header>
-
-    <div id="empty-notice">남은 일정이 없어요</div>
-
-    <div id="todo-container"></div>
-
+    </div>
     <script type=" text/javascript " src="todolist_func.js "></script>
 </body>
 
