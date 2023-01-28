@@ -19,8 +19,6 @@ button {
 #head {
     position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     background: #2C2C2C;
     color: #FFFFFF;
 }
@@ -32,7 +30,7 @@ button {
 }
 
 .container {
-    padding: 20px 20px 10px 20px;
+    padding: 20px 20px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,8 +38,7 @@ button {
 }
 
 #todo-form {
-    margin-left: 2%;
-    margin-right: 2%;
+    margin: 0 2%;
     font-weight: bold;
     display: none;
 }
@@ -56,13 +53,11 @@ button {
 .input-line {
     padding-bottom: 10px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
 .button-group {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -73,12 +68,14 @@ button {
     border-radius: 10px;
 }
 
-#empty-notice {
-    margin: 0;
-    flex: 1;
+#todo-container {
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+}
+
+#empty-notice {
+    margin: auto;
     font-weight: 600;
     font-size: 50px;
     color: #C2C2C2;
@@ -86,12 +83,11 @@ button {
 
 .todo {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     border-style: solid;
-    border-width: 0px 0px 1px 0px;
+    border-width: 0 0 1px;
     border-Bottom-color: #2C2C2C;
 }
 
