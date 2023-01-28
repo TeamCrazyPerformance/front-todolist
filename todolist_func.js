@@ -1,24 +1,24 @@
-const emptyNotice = document.getElementById('empty-notice');
-const plusButton = document.getElementById('plus-button');
+const emptyNotice = document.getElementById("empty-notice");
+const plusButton = document.getElementById("plus-button");
 let todoNum = 0;
 
 function toggleCreateTodoForm() {
-    const createTodoForm = document.getElementById('todo-form');
+    const createTodoForm = document.getElementById("todo-form");
 
-    if (createTodoForm.style.display === 'block') {
-        createTodoForm.style.display = 'none';
+    if (createTodoForm.style.display === "block") {
+        createTodoForm.style.display = "none";
         visiblePlusImage()
     } else {
-        createTodoForm.style.display = 'block';
+        createTodoForm.style.display = "block";
         invisiblePlusImage()
     }
 }
 
 function createTodo() {
-    const todoContentElement = document.getElementById('todo-content');
+    const todoContentElement = document.getElementById("todo-content");
     todoContent = todoContentElement.value;
-    if (todoContent === '') {
-        window.alert("내용을 입력해주세요");
+
+    if (todoContent === "") {
         return;
     }
 
@@ -36,11 +36,11 @@ function createTodo() {
 
 
     function createTodoElement(todoContent) {
-        const todo = document.createElement('div');
+        const todo = document.createElement("div");
         todo.className = "todo";
         todo.innerHTML =
-            `<div class='todo-text'>${todoContent}</div>
-            <button class='delete-button' onclick='removeTodo(this)'>x</button>`;
+            `<div class="todo-text">${todoContent}</div>
+            <button class="delete-button" onclick="removeTodo(this)">x</button>`;
         return todo;
     }
 
@@ -50,11 +50,11 @@ function createTodo() {
     }
 
     function clearTodoContent(todoContentElement) {
-        todoContentElement.value = '';
+        todoContentElement.value = "";
     }
 
     function removeEmptyNotice() {
-        emptyNotice.style.display = 'none';
+        emptyNotice.style.display = "none";
     }
 
 }
@@ -68,7 +68,7 @@ function removeTodo(deleteButton) {
     }
 
     function showEmptyNotice() {
-        emptyNotice.style.display = 'flex';
+        emptyNotice.style.display = "flex";
     }
 }
 
@@ -78,9 +78,9 @@ function isTodoListEmpty() {
 
 
 function invisiblePlusImage() {
-    plusButton.style.display = 'none';
+    plusButton.style.display = "none";
 }
 
 function visiblePlusImage() {
-    plusButton.style.display = 'block';
+    plusButton.style.display = "block";
 }
