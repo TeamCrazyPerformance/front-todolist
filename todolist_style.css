@@ -7,6 +7,11 @@ html, body {
     flex-direction: column;
 }
 
+button {
+    background: transparent;
+    cursor: pointer;
+}
+
 #head {
     position: sticky;
     top: 0;
@@ -38,9 +43,10 @@ html, body {
 }
 
 #plus-button {
+    border: none;
+    padding: 0;
     width: 30px;
     height: 30px;
-    cursor: pointer;
 }
 
 .input-line {
@@ -58,12 +64,9 @@ html, body {
 
 .add-cancel-btn {
     margin-left: 5px;
-    margin-right: 5px;
-    background-color: #2C2C2C;
+    border: 1px solid white;
     color: #FFFFFF;
     border-radius: 10px;
-    border-color: #FFFFFF;
-    cursor: pointer;
 }
 
 #empty-notice {
@@ -93,7 +96,6 @@ html, body {
 }
 
 .delete-button {
-    cursor: pointer;
     border: none;
     background: #FFFFFF;
 }
