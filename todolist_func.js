@@ -16,9 +16,10 @@ function toggleCreateTodoForm() {
 
 function createTodo() {
     const todoContentElement = document.getElementById("todo-content");
-    todoContent = todoContentElement.value;
+    const todoContent = todoContentElement.value;
 
     if (todoContent === "") {
+        alert("내용을 입력해주세요");
         return;
     }
 
