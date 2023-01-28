@@ -40,7 +40,7 @@ function createTodo() {
         todo.className = "todo";
         todo.innerHTML =
             `<div class='todo-text'>${todoContent}</div>
-            <button class='delete-button' onclick='removeSchedule(this)'>x</button>`;
+            <button class='delete-button' onclick='removeTodo(this)'>x</button>`;
         return todo;
     }
 
@@ -59,7 +59,7 @@ function createTodo() {
 
 }
 
-function removeSchedule(deleteButton) {
+function removeTodo(deleteButton) {
     deleteButton.parentElement.remove();
     todoNum--;
 
