@@ -72,8 +72,7 @@ span {
     background: #2C2C2C;
 }
 
-#addTitle {
-    display: block;
+label {
     padding: 4px 0px 0px 11px;
 
     font-family: 'Inter';
