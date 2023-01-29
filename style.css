@@ -8,10 +8,12 @@ body {
 
 header {
     width: 100vw;
-    height: 46px;
+    min-height: 46px;
     box-sizing: border-box;
-    padding: 9px 15px 8px 11px;
+    /* padding: 9px 15px 8px 11px; */
     background: #2C2C2C;
+    display: flex;
+    justify-content: space-between;
 }
 /*
 span {
@@ -31,36 +33,55 @@ span {
     justify-content: center;
 }
 
-.white_bold_text {
+.white_text {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
     text-align: center;
     color: #FFFFFF;
 }
 
-.white_small_text {
-    font-family: 'Inter';
-    font-style: normal;
+.logo {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    height: calc(100% - 18px);
+}
+
+.logo {
+    margin: 9px 15px;
+}
+
+.plus_span {
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 44px;
+    position: absolute;
+    top: -2px;
+    right: 12px;
+}
+
+.plus_button {
+    width: 27px;
+    height: 27px;
+    border: 1px solid #FFFFFF;
+    /* float: right; */
+    border-radius: 50%;
+    background-color: #2C2C2C;
+    position: absolute;
+    top: 9px;
+    right: 11px;
+}
+
+.new_schedule_input_label, .btnAddOrCancel {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    color: #FFFFFF;
 }
 
 #btnPlus {
-    width: 27px;
-    height: 27px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: right;
-    padding-bottom: 10px;
-    border-radius: 50%;
     background-color: #2C2C2C;
-    border-color: #FFFFFF;
+    border: none;
 }
 
 #addScheduleContainer {

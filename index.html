@@ -9,14 +9,17 @@
   
   <body>
     <header>
-        <span class="white_bold_text">TODO LIST</span>
-        <button type="button" id="btnPlus">+</button>
+        <span class="logo white_text">TODO LIST</span>
+        <button type="button" id="btnPlus">
+          <div class="plus_button"></div>
+          <span class="white_text plus_span">+</span>
+        </button>
         <section id="addScheduleContainer">
-            <label for="scheduleInput" class="white_small_text">새로운 일정</label>
+            <label for="scheduleInput" class="white_text new_schedule_input_label">새로운 일정</label>
             <div id="scheduleTextAndButtonContainer">
               <input type="text" id="scheduleInput">
-              <button type="submit" class="btnAddOrCancel white_small_text" id="addBtn">추가</button>
-              <button type="submit" class="btnAddOrCancel white_small_text" id="cancelBtn">취소</button>
+              <button type="submit" class="btnAddOrCancel white_text" id="addBtn">추가</button>
+              <button type="submit" class="btnAddOrCancel white_text" id="cancelBtn">취소</button>
             </div>
         </section>
     </header>
