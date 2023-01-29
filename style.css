@@ -15,7 +15,7 @@ header {
 
     background: #2C2C2C;
 }
-
+/*
 span {
     font-family: 'Inter';
     font-style: normal;
@@ -25,6 +25,7 @@ span {
 
     color: #000000;
 }
+*/
 
 #container {
     flex: 1;
@@ -33,14 +34,22 @@ span {
     justify-content: center;
 }
 
-#title {
+.white_bold_text {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
     text-align: center;
+    color: #FFFFFF;
+}
 
+.white_small_text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
     color: #FFFFFF;
 }
 
@@ -74,14 +83,6 @@ span {
 
 label {
     padding: 4px 0px 0px 11px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #FFFFFF;
 }
 
 #scheduleTextAndButtonContainer {
@@ -102,14 +103,7 @@ input {
     margin: 12px 0px 15px 0px;
     padding: 4px 12px 2px 13px;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-
     background: #2C2C2C;
-    color: #FFFFFF;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
 }
@@ -122,12 +116,11 @@ input {
     margin-right: 15px;
 }
 
-#noScheduleMessage {
+.no_schedule_span {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
-
     color: #C2C2C2;
 }
