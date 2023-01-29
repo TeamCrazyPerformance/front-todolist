@@ -1,7 +1,6 @@
 body {
     margin: 0px;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -12,7 +11,6 @@ header {
     height: 46px;
     box-sizing: border-box;
     padding: 9px 15px 8px 11px;
-
     background: #2C2C2C;
 }
 /*
@@ -22,7 +20,6 @@ span {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-
     color: #000000;
 }
 */
@@ -62,13 +59,6 @@ span {
     float: right;
     padding-bottom: 10px;
     border-radius: 50%;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 2.5em;
-
-    color: #FFFFFF;
     background-color: #2C2C2C;
     border-color: #FFFFFF;
 }
@@ -77,7 +67,6 @@ span {
     width: 100%;
     height: 75px;
     display: none;
-
     background: #2C2C2C;
 }
 
@@ -94,7 +83,6 @@ input {
     height: 25px;
     margin: 12px 20px 15px 11px;
     flex: auto;
-
     background: #F5F5F5;
 }
 
@@ -102,7 +90,6 @@ input {
     box-sizing: border-box;
     margin: 12px 0px 15px 0px;
     padding: 4px 12px 2px 13px;
-
     background: #2C2C2C;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
