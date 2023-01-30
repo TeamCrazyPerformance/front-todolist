@@ -12,36 +12,14 @@ const scheduleListContainer = document.getElementById("schedule_list_container")
 
 const scheduleArray = [];
 
-function showContents(content) {
-    switch (content) {
-        case PLUS_BUTTON:
-            plusButton.style.display = 'inline';
-            break;
-
-        case ADD_SCHEDULE_CONTAINER:
-            newScheduleInputContainer.style.display = 'block';
-            break;
-
-        // no default
-    }
+function requireNewScheduleInputContainer() {
+    newScheduleInputContainer.style.display = 'block';
+    plusButton.style.display = "none";
 }
 
-function hideContents(content) {
-    let target;
-
-    switch (content) {
-        case PLUS_BUTTON:
-            target = plusButton;
-            break;
-
-        case ADD_SCHEDULE_CONTAINER:
-            target = newScheduleInputContainer;
-            break;
-
-        // no default
-    }
-
-    target.style.display = "none";
+function revertNewScheduleInputContainer() {
+    newScheduleInputContainer.style.display = "none";
+    plusButton.style.display = 'inline';
 }
 
 function changeContainerStyle() {
@@ -107,8 +85,7 @@ function searchSchedule(addedScheduleName) {
 }
 
 plusButton.addEventListener("click", function () {
-    showContents(ADD_SCHEDULE_CONTAINER);
-    hideContents(PLUS_BUTTON);
+    requireNewScheduleInputContainer();
 });
 
 addInputButton.addEventListener("click", function () {
@@ -126,13 +103,10 @@ addInputButton.addEventListener("click", function () {
         changeContainerStyle();
     }
 
-    showContents(PLUS_BUTTON);
-    hideContents(ADD_SCHEDULE_CONTAINER);
+    revertNewScheduleInputContainer();
 });
 
 cancelInputButton.addEventListener("click", function () {
     newScheduleInput.value = null;
-
-    showContents(PLUS_BUTTON);
-    hideContents(ADD_SCHEDULE_CONTAINER);
+    revertNewScheduleInputContainer();
 });
