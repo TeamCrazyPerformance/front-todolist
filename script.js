@@ -2,7 +2,7 @@ const PLUS_BUTTON = 0;
 const ADD_SCHEDULE_CONTAINER = 1;
 const NO_SCHEDULE_MESSAGE = 2;
 
-const btnPlus = document.getElementById("btnPlus");
+const plusButtonWrapper = document.getElementById("plus_button_wrapper");
 const addScheduleContainer = document.getElementById("addScheduleContainer");
 const addBtn = document.getElementById("addBtn");
 const cancelBtn = document.getElementById("cancelBtn");
@@ -16,7 +16,7 @@ let scheduleArray = [];
 function showContents(content) {
     switch (content) {
         case PLUS_BUTTON:
-            btnPlus.style.display = 'inline';
+            plusButtonWrapper.style.display = 'inline';
             break;
 
         case ADD_SCHEDULE_CONTAINER:
@@ -36,7 +36,7 @@ function hideContents(content) {
 
     switch (content) {
         case PLUS_BUTTON:
-            target = btnPlus;
+            target = plusButtonWrapper;
             break;
 
         case ADD_SCHEDULE_CONTAINER:
@@ -114,7 +114,7 @@ function searchSchedule(addedScheduleName) {
     return false;
 }
 
-btnPlus.addEventListener("click", function () {
+plusButtonWrapper.addEventListener("click", function () {
     showContents(ADD_SCHEDULE_CONTAINER);
     hideContents(PLUS_BUTTON);
 });

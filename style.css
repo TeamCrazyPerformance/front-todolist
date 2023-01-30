@@ -47,7 +47,7 @@ span {
     font-weight: 300;
     font-size: 36px;
     line-height: 44px;
-    position: absolute;
+    position: fixed;
     top: -2px;
     right: 12px;
 }
@@ -64,14 +64,14 @@ span {
     line-height: 19px;
 }
 
-#btnPlus {
+.plus_button {
     width: 27px;
     height: 27px;
     border: 1px solid #FFFFFF;
     /* float: right; */
     border-radius: 50%;
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     top: 9px;
     right: 11px;
 }
