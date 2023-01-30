@@ -64,10 +64,12 @@ function addSchedule(addedScheduleName) {
 function addScheduleUI(addedScheduleName) {
     const scheduleContainer = document.createElement('div');
     const scheduleName = document.createElement('span');
-    const scheduleDeleteButton = document.createElement('span');
+    const scheduleDeleteButton = document.createElement('button');
 
     scheduleName.innerText = addedScheduleName;
     scheduleDeleteButton.innerText = "x";
+    scheduleDeleteButton.style.border = "none";
+    scheduleDeleteButton.style.backgroundColor = "transparent";
     scheduleContainer.id = addedScheduleName;
     scheduleName.style.color = "#000000";
     scheduleDeleteButton.style.color = "#000000";
@@ -86,7 +88,6 @@ function addScheduleUI(addedScheduleName) {
         for (var i = 0; i < scheduleArray.length; i++) {
             if (scheduleArray[i] === addedScheduleName) {
                 scheduleArray.splice(i, 1);
-                return;
             }
         }
 
