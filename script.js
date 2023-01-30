@@ -2,29 +2,24 @@ const PLUS_BUTTON = 0;
 const ADD_SCHEDULE_CONTAINER = 1;
 const NO_SCHEDULE_MESSAGE = 2;
 
-const plusButtonWrapper = document.getElementById("plus_button_wrapper");
-const addScheduleContainer = document.getElementById("addScheduleContainer");
-const addBtn = document.getElementById("addBtn");
-const cancelBtn = document.getElementById("cancelBtn");
-const scheduleInput = document.getElementById("scheduleInput");
-const container = document.getElementById("container");
-const noScheduleMessage = document.getElementById("noScheduleMessage");
-const schedulesContainer = document.getElementById("schedulesContainer");
+const plusButton = document.getElementById("plus_button");
+const newScheduleInputContainer = document.getElementById("new_schedule_input_container");
+const addInputButton = document.getElementById("add_input_button");
+const cancelInputButton = document.getElementById("cancel_input_button");
+const newScheduleInput = document.getElementById("new_schedule_input");
+const noScheduleContainer = document.getElementById("no_schedule_container");
+const scheduleListContainer = document.getElementById("schedule_list_container");
 
 const scheduleArray = [];
 
 function showContents(content) {
     switch (content) {
         case PLUS_BUTTON:
-            plusButtonWrapper.style.display = 'inline';
+            plusButton.style.display = 'inline';
             break;
 
         case ADD_SCHEDULE_CONTAINER:
-            addScheduleContainer.style.display = 'block';
-            break;
-
-        case NO_SCHEDULE_MESSAGE:
-            noScheduleMessage.style.display = 'block';
+            newScheduleInputContainer.style.display = 'block';
             break;
 
         // no default
@@ -36,15 +31,11 @@ function hideContents(content) {
 
     switch (content) {
         case PLUS_BUTTON:
-            target = plusButtonWrapper;
+            target = plusButton;
             break;
 
         case ADD_SCHEDULE_CONTAINER:
-            target = addScheduleContainer;
-            break;
-
-        case NO_SCHEDULE_MESSAGE:
-            target = noScheduleMessage;
+            target = newScheduleInputContainer;
             break;
 
         // no default
@@ -55,15 +46,13 @@ function hideContents(content) {
 
 function changeContainerStyle() {
     if (scheduleArray.length > 0) {
-        container.style.flexDirection = "column"
-        container.style.alignItems = "flex-start";
-        container.style.justifyContent = "flex-start";
-        hideContents(NO_SCHEDULE_MESSAGE);
+        scheduleListContainer.style.display = 'flex';
+        scheduleListContainer.style.flex = 1;
+        noScheduleContainer.style.display = 'none';
     } else {
-        container.style.flexDirection = "row"
-        container.style.alignItems = "center";
-        container.style.justifyContent = "center";
-        showContents(NO_SCHEDULE_MESSAGE);
+        scheduleListContainer.style.display = 'none';
+        noScheduleContainer.style.display = 'flex';
+        noScheduleContainer.style.flex = 1;
     }
 }
 
@@ -80,6 +69,8 @@ function addScheduleUI(addedScheduleName) {
     scheduleName.innerText = addedScheduleName;
     scheduleDeleteButton.innerText = "x";
     scheduleContainer.id = addedScheduleName;
+    scheduleName.style.color = "#000000";
+    scheduleDeleteButton.style.color = "#000000";
 
     scheduleContainer.style.width = "100vw";
     scheduleContainer.style.padding = "24px 17px 24px 11px";
@@ -89,7 +80,7 @@ function addScheduleUI(addedScheduleName) {
 
     scheduleContainer.appendChild(scheduleName);
     scheduleContainer.appendChild(scheduleDeleteButton);
-    container.appendChild(scheduleContainer);
+    scheduleListContainer.appendChild(scheduleContainer);
 
     scheduleDeleteButton.addEventListener("click", function () {
         for (var i = 0; i < scheduleArray.length; i++) {
@@ -114,15 +105,15 @@ function searchSchedule(addedScheduleName) {
     return false;
 }
 
-plusButtonWrapper.addEventListener("click", function () {
+plusButton.addEventListener("click", function () {
     showContents(ADD_SCHEDULE_CONTAINER);
     hideContents(PLUS_BUTTON);
 });
 
-addBtn.addEventListener("click", function () {
-    let addedScheduleName = scheduleInput.value;
+addInputButton.addEventListener("click", function () {
+    let addedScheduleName = newScheduleInput.value;
 
-    scheduleInput.value = null;
+    newScheduleInput.value = null;
 
     if (addedScheduleName.length === 0) {
         window.alert("스케줄 이름을 입력해주세요");
@@ -138,8 +129,8 @@ addBtn.addEventListener("click", function () {
     hideContents(ADD_SCHEDULE_CONTAINER);
 });
 
-cancelBtn.addEventListener("click", function () {
-    scheduleInput.value = null;
+cancelInputButton.addEventListener("click", function () {
+    newScheduleInput.value = null;
 
     showContents(PLUS_BUTTON);
     hideContents(ADD_SCHEDULE_CONTAINER);
