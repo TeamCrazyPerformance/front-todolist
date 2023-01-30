@@ -76,16 +76,6 @@ function addScheduleUI(addedScheduleName) {
     });
 }
 
-function searchSchedule(addedScheduleName) {
-    for (const schedule of scheduleArray) {
-        if (addedScheduleName === schedule) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 function clearNewScheduleInput() {
     newScheduleInput.value = null;
 }
@@ -101,7 +91,7 @@ addInputButton.addEventListener("click", function () {
     if (addedScheduleName.length === 0) {
         window.alert("스케줄 이름을 입력해주세요");
         return;
-    } else if (searchSchedule(addedScheduleName)) {
+    } else if (scheduleArray.some((schedule) => schedule === addedScheduleName)) {
         window.alert("이미 존재하는 스케줄입니다");
     } else {
         addSchedule(addedScheduleName);
