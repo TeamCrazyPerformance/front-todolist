@@ -86,14 +86,17 @@ function searchSchedule(addedScheduleName) {
     return false;
 }
 
+function clearNewScheduleInput() {
+    newScheduleInput.value = null;
+}
+
 plusButton.addEventListener("click", function () {
     demandNewScheduleInputContainer();
 });
 
 addInputButton.addEventListener("click", function () {
     let addedScheduleName = newScheduleInput.value;
-
-    newScheduleInput.value = null;
+    clearNewScheduleInput();
 
     if (addedScheduleName.length === 0) {
         window.alert("스케줄 이름을 입력해주세요");
@@ -109,6 +112,6 @@ addInputButton.addEventListener("click", function () {
 });
 
 cancelInputButton.addEventListener("click", function () {
-    newScheduleInput.value = null;
+    clearNewScheduleInput();
     revertNewScheduleInputContainer();
 });
