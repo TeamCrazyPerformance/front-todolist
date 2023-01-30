@@ -6,18 +6,36 @@ const newScheduleInput = document.getElementById("new_schedule_input");
 const noScheduleContainer = document.getElementById("no_schedule_container");
 const scheduleListContainer = document.getElementById("schedule_list_container");
 const ul = document.querySelector("ul");
+const main = document.querySelector("main");
+const header = document.querySelector("header");
 
 let scheduleArray = [];
 let isScheduleExist;
 
+function checkScroll() {
+    const lis = document.getElementsByTagName("Li");
+
+    if (scheduleListContainer.scrollHeight > scheduleListContainer.clientHeight) {
+        Array.from(lis).forEach(li => {
+            li.style.paddingRight = "34px";
+        });
+    } else {
+        Array.from(lis).forEach(li => {
+            li.style.paddingRight = "17px";
+        });
+    }
+}
+
 function demandNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = 'block';
     plusButton.style.display = "none";
+    checkScroll();
 }
 
 function revertNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = "none";
     plusButton.style.display = 'inline';
+    checkScroll();
 }
 
 function demandScheduleListContainer() {
@@ -60,10 +78,13 @@ function addScheduleUI(addedScheduleName) {
     scheduleContainer.appendChild(scheduleDeleteButton);
     ul.appendChild(scheduleContainer);
 
+    checkScroll();
+
     scheduleDeleteButton.addEventListener("click", function () {
         scheduleArray = scheduleArray.filter((schedule) => schedule !== addedScheduleName);
         scheduleContainer.remove();
         changeContainerStyle();
+        checkScroll();
     });
 }
 
