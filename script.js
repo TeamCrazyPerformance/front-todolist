@@ -6,7 +6,7 @@ const newScheduleInput = document.getElementById("new_schedule_input");
 const noScheduleContainer = document.getElementById("no_schedule_container");
 const scheduleListContainer = document.getElementById("schedule_list_container");
 
-const scheduleArray = [];
+let scheduleArray = [];
 let isScheduleExist;
 
 function requireNewScheduleInputContainer() {
@@ -62,12 +62,7 @@ function addScheduleUI(addedScheduleName) {
     scheduleListContainer.appendChild(scheduleContainer);
 
     scheduleDeleteButton.addEventListener("click", function () {
-        for (var i = 0; i < scheduleArray.length; i++) {
-            if (scheduleArray[i] === addedScheduleName) {
-                scheduleArray.splice(i, 1);
-            }
-        }
-
+        scheduleArray = scheduleArray.filter((schedule) => schedule !== addedScheduleName);
         scheduleContainer.remove();
         changeContainerStyle();
     });
