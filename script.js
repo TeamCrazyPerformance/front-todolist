@@ -16,7 +16,7 @@ let scheduleArray = [];
 function showContents(content) {
     switch (content) {
         case PLUS_BUTTON:
-            btnPlus.style.display = 'flex';
+            btnPlus.style.display = 'inline';
             break;
 
         case ADD_SCHEDULE_CONTAINER:
