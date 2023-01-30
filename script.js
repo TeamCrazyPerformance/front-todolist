@@ -5,6 +5,7 @@ const cancelInputButton = document.getElementById("cancel_input_button");
 const newScheduleInput = document.getElementById("new_schedule_input");
 const noScheduleContainer = document.getElementById("no_schedule_container");
 const scheduleListContainer = document.getElementById("schedule_list_container");
+const ul = document.querySelector("ul");
 
 let scheduleArray = [];
 let isScheduleExist;
@@ -47,27 +48,17 @@ function addSchedule(addedScheduleName) {
 }
 
 function addScheduleUI(addedScheduleName) {
-    const scheduleContainer = document.createElement('div');
+    const scheduleContainer = document.createElement('li');
     const scheduleName = document.createElement('span');
     const scheduleDeleteButton = document.createElement('button');
 
     scheduleName.innerText = addedScheduleName;
-    scheduleDeleteButton.innerText = "x";
-    scheduleDeleteButton.style.border = "none";
-    scheduleDeleteButton.style.backgroundColor = "transparent";
     scheduleContainer.id = addedScheduleName;
-    scheduleName.style.color = "#000000";
-    scheduleDeleteButton.style.color = "#000000";
-
-    scheduleContainer.style.width = "100vw";
-    scheduleContainer.style.padding = "24px 17px 24px 11px";
-    scheduleContainer.style.borderBottom = "1px solid #DEDEDE";
-    scheduleContainer.style.boxSizing = "border-box";
-    scheduleDeleteButton.style.float = "right";
+    scheduleDeleteButton.innerText = "x";
 
     scheduleContainer.appendChild(scheduleName);
     scheduleContainer.appendChild(scheduleDeleteButton);
-    scheduleListContainer.appendChild(scheduleContainer);
+    ul.appendChild(scheduleContainer);
 
     scheduleDeleteButton.addEventListener("click", function () {
         scheduleArray = scheduleArray.filter((schedule) => schedule !== addedScheduleName);

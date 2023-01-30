@@ -65,7 +65,8 @@ span {
     background: #2C2C2C;
 }
 
-.new_schedule_input_label, .new_schedule_input_button {
+.new_schedule_input_label,
+.new_schedule_input_button {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
@@ -127,4 +128,34 @@ main {
     font-size: 24px;
     line-height: 29px;
     color: #C2C2C2;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    width: 100vw;
+    padding: 24px 17px 24px 11px;
+    border-bottom: 1px solid #DEDEDE;
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+li>button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+li>span, li>button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
 }
