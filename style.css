@@ -3,7 +3,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
 }
 
 header {
@@ -107,6 +106,7 @@ span {
 main {
     flex: 1;
     display: flex;
+    height: calc(100vh - 46px - 75px);
 }
 
 #no_schedule_container {
@@ -121,6 +121,8 @@ main {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 .no_schedule_span {
