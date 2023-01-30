@@ -11,7 +11,7 @@ const container = document.getElementById("container");
 const noScheduleMessage = document.getElementById("noScheduleMessage");
 const schedulesContainer = document.getElementById("schedulesContainer");
 
-let scheduleArray = [];
+const scheduleArray = [];
 
 function showContents(content) {
     switch (content) {
