@@ -68,7 +68,7 @@ function addScheduleUI(addedScheduleName) {
             }
         }
 
-        scheduleContainer.style.display = "none";
+        scheduleContainer.remove();
         changeContainerStyle();
     });
 }
