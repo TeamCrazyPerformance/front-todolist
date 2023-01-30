@@ -1,7 +1,3 @@
-const PLUS_BUTTON = 0;
-const ADD_SCHEDULE_CONTAINER = 1;
-const NO_SCHEDULE_MESSAGE = 2;
-
 const plusButton = document.getElementById("plus_button");
 const newScheduleInputContainer = document.getElementById("new_schedule_input_container");
 const addInputButton = document.getElementById("add_input_button");
@@ -11,6 +7,7 @@ const noScheduleContainer = document.getElementById("no_schedule_container");
 const scheduleListContainer = document.getElementById("schedule_list_container");
 
 const scheduleArray = [];
+let isScheduleExist;
 
 function requireNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = 'block';
@@ -23,7 +20,9 @@ function revertNewScheduleInputContainer() {
 }
 
 function changeContainerStyle() {
-    if (scheduleArray.length > 0) {
+    isScheduleExist = (scheduleArray.length > 0);
+
+    if (isScheduleExist) {
         scheduleListContainer.style.display = 'flex';
         scheduleListContainer.style.flex = 1;
         noScheduleContainer.style.display = 'none';
