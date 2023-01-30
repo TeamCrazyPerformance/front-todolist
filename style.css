@@ -103,6 +103,25 @@ span {
     margin-right: 5px;
 }
 
+main {
+    flex: 1;
+    display: flex;
+}
+
+#no_schedule_container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#schedule_list_container {
+    flex: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
 .no_schedule_span {
     font-weight: 700;
     font-size: 24px;
