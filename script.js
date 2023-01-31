@@ -6,8 +6,6 @@ const newScheduleInput = document.getElementById("new_schedule_input");
 const noScheduleContainer = document.getElementById("no_schedule_container");
 const scheduleListContainer = document.getElementById("schedule_list_container");
 const ul = document.querySelector("ul");
-const main = document.querySelector("main");
-const header = document.querySelector("header");
 
 let scheduleArray = [];
 let isScheduleExist;
