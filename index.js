@@ -1,32 +1,33 @@
 let cnt=0;
 
 function toggleVisibility() {
-    let element = document.getElementById("add-todo");
-    let hidden = element.getAttribute("hidden");
+    display = document.getElementById("add-todo").style.display;
 
-    if (hidden)
-        element.removeAttribute("hidden"); 
+    if (display === "none")
+        document.getElementById("add-todo").style.display = "block";
     else
-        element.setAttribute("hidden", "hidden");
+        document.getElementById("add-todo").style.display = "none"
     
 }
 
 function addTodo() {
-    let list_container = document.getElementById("list-container");
+    let listContainer = document.getElementById("list-container");
 
     // if todo-list is empty, remove default text and add ul
     if(cnt === 0){
-        let e = document.getElementById("default-text");
-        e.remove();
-        let initial_ul = document.createElement("ul");  //parent
-        list_container.appendChild(initial_ul)
+        let defaultText = document.getElementById("default-text");
+        defaultText.remove();
+        let initialUl = document.createElement("ul");  //parent
+        initialUl.id = "todo-ul";
+        initialUl.className = "todo-ul";
+        listContainer.appendChild(initialUl);
     }
 
-    let ul = document.getElementsByTagName("ul")[0];  //parent
+    let ul = document.getElementById("todo-ul");  //parent
 
     // get what users write
-    let element = document.getElementById("input");
-    let value = element.value;
+    let todoInput = document.getElementById("todo-input");
+    let value = todoInput.value;
 
     // make div which will have p and btn and li which will have div.
     let li = document.createElement("li");
@@ -44,15 +45,15 @@ function addTodo() {
     btn.addEventListener("click",function(){
         this.parentNode.remove();
         cnt = cnt - 1;
-        console.log(cnt)
+        // when the last todo is removed, remove ul and add default text.
         if(cnt === 0){
-            let e = document.getElementsByTagName("ul")[0];
-            e.remove();
-            let default_text = document.createElement("p");
-            default_text.innerText = "남은 일정이 없어요";
-            default_text.id = "default-text";
-            default_text.className = "default-text";
-            list_container.appendChild(default_text);
+            let ul = document.getElementById("todo-ul");
+            ul.remove();
+            let defaultText = document.createElement("p");
+            defaultText.innerText = "남은 일정이 없어요";
+            defaultText.id = "default-text";
+            defaultText.className = "default-text";
+            listContainer.appendChild(defaultText);
         }
     });
 
@@ -65,9 +66,10 @@ function addTodo() {
 }
 
 function clearInput() {
-    let element = document.getElementById("input");
-    element.value = "";
+    let input = document.getElementById("todo-input");
+    input.value = "";
 }
+
 function cancel() {
     clearInput();
     toggleVisibility();
