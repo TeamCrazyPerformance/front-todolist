@@ -1,6 +1,5 @@
 const emptyNotice = document.getElementById('empty-notice');
 const plusButton = document.getElementById('plus-button');
-let todoNum = 0;
 
 function toggleCreateTodoForm() {
     const createTodoForm = document.getElementById('todo-form');
@@ -24,7 +23,6 @@ function createTodo() {
 
     const todo = createTodoElement(todoContent);
     appendTodo(todo);
-    todoNum++;
 
     if (!isTodoListEmpty()) {
         removeEmptyNotice();
@@ -61,7 +59,6 @@ function createTodo() {
 
 function removeSchedule(deleteButton) {
     deleteButton.parentElement.remove();
-    todoNum--;
 
     if (isTodoListEmpty()) {
         showEmptyNotice();
@@ -73,7 +70,7 @@ function removeSchedule(deleteButton) {
 }
 
 function isTodoListEmpty() {
-    return todoNum === 0;
+    return (document.querySelector('.todo') == null);
 }
 
 
