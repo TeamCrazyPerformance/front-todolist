@@ -1,3 +1,6 @@
+const PADDING_WITH_SCROLL = "34px";
+const PADDING_WITH_NO_SCROLL = "17px";
+
 const plusButton = document.getElementById("plus_button");
 const newScheduleInputContainer = document.getElementById("new_schedule_input_container");
 const addInputButton = document.getElementById("add_input_button");
@@ -15,11 +18,11 @@ function checkScroll() {
 
     if (scheduleListContainer.scrollHeight > scheduleListContainer.clientHeight) {
         Array.from(lis).forEach(li => {
-            li.style.paddingRight = "34px";
+            li.style.paddingRight = PADDING_WITH_SCROLL;
         });
     } else {
         Array.from(lis).forEach(li => {
-            li.style.paddingRight = "17px";
+            li.style.paddingRight = PADDING_WITH_NO_SCROLL;
         });
     }
 }
