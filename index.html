@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>To Do List</title>
-  </head>
 
-  <body>
-    <header>TODO LIST</header>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <section class="top_container">
+      <span class="logo">TODO LIST</span>
+      <button type="button" id="plus_button"><span class="plus_span">+</span></button>
+    </section>
+
+    <section id="new_schedule_input_container">
+      <label for="new_schedule_input" class="new_schedule_input_label"><span>새로운 일정</span></label>
+      <div class="input_and_buttons_container">
+        <input type="text" id="new_schedule_input">
+        <div class="new_schedule_input_button_container">
+          <button type="submit" class="new_schedule_input_button" id="add_input_button"><span>추가</span></button>
+          <button type="submit" class="new_schedule_input_button" id="cancel_input_button"><span>취소</span></button>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="no_schedule_container">
+      <span class="no_schedule_span">남은 일정이 없어요</span>
+    </section>
+
+    <section id="schedule_list_container">
+      <ul></ul>
+    </section>
+  </main>
+</body>
+
+<script src="script.js"></script>
+
 </html>
