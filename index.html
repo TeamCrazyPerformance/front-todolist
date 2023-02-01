@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <meta charset="UTF-8" />
     <title>To Do List</title>
-  </head>
+</head>
 
-  <body>
-    <header>TODO LIST</header>
-  </body>
+<body>
+    <header id="head">
+        <div class="container">
+            <div class="todo-logo">TODO LIST</div>
+            <img id="plus-button" src="plusbutton.png" onclick="toggleCreateTodoForm()">
+        </div>
+        <div id="todo-form">
+            <div id="new-schedule">새로운 일정</div>
+            <div class='input-line'>
+                <input type="text" id="todo-content">
+                <div class='button-group'>
+                    <input type='button' class="add-cancel-btn" value="추가" id="addbutton" onclick='createTodo()'>
+                    <input type='button' class="add-cancel-btn" value="취소" id="cancelbutton" onclick='toggleCreateTodoForm()'>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="empty-notice">남은 일정이 없어요</div>
+
+    <div id="todo-container"></div>
+
+    <script type=" text/javascript " src="main.js "></script>
+</body>
+
 </html>
