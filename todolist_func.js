@@ -8,7 +8,10 @@ function toggleCreateTodoForm() {
     if (createTodoForm.style.display === 'block') {
         createTodoForm.style.display = 'none';
         visiblePlusImage()
-    } else {
+        return;
+    }
+
+    {
         createTodoForm.style.display = 'block';
         invisiblePlusImage()
     }
