@@ -76,7 +76,7 @@ body {
 }
 
 .todo-text {
-    font-size: 20px;
+    ㅠ font-size: 20px;
 }
 
 .delete-button {
@@ -87,20 +87,4 @@ body {
 
 #new-schedule {
     padding-bottom: 10px;
-}
-
-#addbutton {
-    background: #000000;
-    border: 1px solid #FFFFFF;
-    border-radius: 5px;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-#cancelbutton {
-    background: #000000;
-    border: 1px solid #FFFFFF;
-    border-radius: 5px;
-    color: #FFFFFF;
-    cursor: pointer;
 }
