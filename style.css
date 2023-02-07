@@ -68,7 +68,7 @@ button {
 }
 
 .new_schedule_input_label,
-.new_schedule_input_button {
+.black_text_button {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
@@ -94,10 +94,10 @@ button {
     display: flex;
 }
 
-.new_schedule_input_button {
+.black_text_button {
     box-sizing: border-box;
     width: 55px;
-    background: #2C2C2C;
+    background: #000000;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
 }
@@ -151,7 +151,7 @@ li {
     align-items: center;
 }
 
-.list_button_container>button {
+.list_edit_button, .list_delete_button {
     width: 14.3px;
     height: 14.3px;
     border: none;
@@ -181,4 +181,9 @@ li>span {
     font-size: 16px;
     line-height: 19px;
     color: #000000;
+}
+
+.edit_input {
+    flex: auto;
+    margin-right: 25px;
 }

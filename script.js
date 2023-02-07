@@ -63,12 +63,21 @@ function addScheduleUI(addedScheduleName) {
     const scheduleDeleteButton = document.createElement('button');
     const scheduleEditButton = document.createElement('button');
     const scheduleButtonContainer = document.createElement('div');
+    const editInput = document.createElement('input');
+    const editCancelButton = document.createElement('button');
+    const editCompleteButton = document.createElement('button');
 
     scheduleName.innerText = addedScheduleName;
     scheduleContainer.id = addedScheduleName;
     scheduleDeleteButton.className = "list_delete_button";
     scheduleEditButton.className = "list_edit_button";
     scheduleButtonContainer.className = "list_button_container";
+    editInput.value = addedScheduleName;
+    editCancelButton.innerHTML = "<span>취소</span>";
+    editCompleteButton.innerHTML = "<span>수정</span>";
+    editInput.className = "edit_input";
+    editCancelButton.className = "black_text_button";
+    editCompleteButton.className = "black_text_button";
 
     scheduleContainer.appendChild(scheduleName);
     scheduleButtonContainer.appendChild(scheduleEditButton);
@@ -76,10 +85,16 @@ function addScheduleUI(addedScheduleName) {
     scheduleContainer.appendChild(scheduleButtonContainer);
     ul.appendChild(scheduleContainer);
 
-    scheduleDeleteButton.addEventListener("click", function () {
+    scheduleDeleteButton.addEventListener("click", function() {
         scheduleArray = scheduleArray.filter(schedule => !checkScheduleExist(schedule, addedScheduleName));
         scheduleContainer.remove();
         changeContainerStyle();
+    });
+
+    scheduleEditButton.addEventListener("click", function() {
+        scheduleName.replaceWith(editInput);
+        scheduleEditButton.replaceWith(editCompleteButton);
+        scheduleDeleteButton.replaceWith(editCancelButton);
     });
 }
 
