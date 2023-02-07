@@ -13,23 +13,23 @@ const ul = document.querySelector("ul");
 let scheduleArray = [];
 let isScheduleExist;
 
-function demandNewScheduleInputContainer() {
+function getNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = 'block';
     plusButton.style.display = "none";
 }
 
-function revertNewScheduleInputContainer() {
+function hideNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = "none";
     plusButton.style.display = 'inline';
 }
 
-function demandScheduleListContainer() {
+function getScheduleListContainer() {
     scheduleListContainer.style.display = 'flex';
     scheduleListContainer.style.flex = 1;
     noScheduleContainer.style.display = 'none';
 }
 
-function demandNoScheduleListContainer() {
+function getNoScheduleListContainer() {
     noScheduleContainer.style.display = 'flex';
     noScheduleContainer.style.flex = 1;
     scheduleListContainer.style.display = 'none';
@@ -43,9 +43,9 @@ function changeContainerStyle() {
     isScheduleExist = (scheduleArray.length > 0);
 
     if (isScheduleExist) {
-        demandScheduleListContainer();
+        getScheduleListContainer();
     } else {
-        demandNoScheduleListContainer();
+        getNoScheduleListContainer();
     }
 }
 
@@ -79,7 +79,7 @@ function clearNewScheduleInput() {
 }
 
 plusButton.addEventListener("click", function () {
-    demandNewScheduleInputContainer();
+    getNewScheduleInputContainer();
 });
 
 addInputButton.addEventListener("click", function () {
@@ -98,10 +98,10 @@ addInputButton.addEventListener("click", function () {
         changeContainerStyle();
     }
 
-    revertNewScheduleInputContainer();
+    hideNewScheduleInputContainer();
 });
 
 cancelInputButton.addEventListener("click", function () {
     clearNewScheduleInput();
-    revertNewScheduleInputContainer();
+    hideNewScheduleInputContainer();
 });
