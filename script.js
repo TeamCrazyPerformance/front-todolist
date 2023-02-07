@@ -35,6 +35,10 @@ function demandNoScheduleListContainer() {
     scheduleListContainer.style.display = 'none';
 }
 
+function checkScheduleExist(schedule) {
+    return schedule !== addedScheduleName;
+}
+
 function changeContainerStyle() {
     isScheduleExist = (scheduleArray.length > 0);
 
@@ -64,7 +68,7 @@ function addScheduleUI(addedScheduleName) {
     ul.appendChild(scheduleContainer);
 
     scheduleDeleteButton.addEventListener("click", function () {
-        scheduleArray = scheduleArray.filter((schedule) => schedule !== addedScheduleName);
+        scheduleArray = scheduleArray.filter();
         scheduleContainer.remove();
         changeContainerStyle();
     });
@@ -82,10 +86,12 @@ addInputButton.addEventListener("click", function () {
     let addedScheduleName = newScheduleInput.value;
     clearNewScheduleInput();
 
+    
+
     if (addedScheduleName.length === 0) {
         window.alert("스케줄 이름을 입력해주세요");
         return;
-    } else if (scheduleArray.some((schedule) => schedule === addedScheduleName)) {
+    } else if (scheduleArray.some(checkScheduleExist)) {
         window.alert("이미 존재하는 스케줄입니다");
     } else {
         addSchedule(addedScheduleName);
