@@ -13,30 +13,14 @@ const ul = document.querySelector("ul");
 let scheduleArray = [];
 let isScheduleExist;
 
-function checkScroll() {
-    const lis = document.getElementsByTagName("Li");
-
-    if (scheduleListContainer.scrollHeight > scheduleListContainer.clientHeight) {
-        Array.from(lis).forEach(li => {
-            li.style.paddingRight = PADDING_WITH_SCROLL;
-        });
-    } else {
-        Array.from(lis).forEach(li => {
-            li.style.paddingRight = PADDING_WITH_NO_SCROLL;
-        });
-    }
-}
-
 function demandNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = 'block';
     plusButton.style.display = "none";
-    checkScroll();
 }
 
 function revertNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = "none";
     plusButton.style.display = 'inline';
-    checkScroll();
 }
 
 function demandScheduleListContainer() {
@@ -79,13 +63,10 @@ function addScheduleUI(addedScheduleName) {
     scheduleContainer.appendChild(scheduleDeleteButton);
     ul.appendChild(scheduleContainer);
 
-    checkScroll();
-
     scheduleDeleteButton.addEventListener("click", function () {
         scheduleArray = scheduleArray.filter((schedule) => schedule !== addedScheduleName);
         scheduleContainer.remove();
         changeContainerStyle();
-        checkScroll();
     });
 }
 

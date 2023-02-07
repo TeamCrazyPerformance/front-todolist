@@ -142,7 +142,7 @@ ul {
 }
 
 li {
-    width: 100vw;
+    width: 100%;
     padding: 24px 17px 24px 11px;
     border-bottom: 1px solid #DEDEDE;
     box-sizing: border-box;
