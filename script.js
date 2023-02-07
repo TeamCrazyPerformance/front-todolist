@@ -85,7 +85,24 @@ plusButton.addEventListener("click", function () {
     getNewScheduleInputContainer();
 });
 
+alignButton.addEventListener("click", function() {
+    scheduleArray.reverse();
+    
+    removeScheduleDisplay();
+    drawScheduleDisplay();
+});
 
+function removeScheduleDisplay() {
+    while (ul.firstChild) {
+        ul.removeChild(ul.firstChild);
+    }
+}
+
+function drawScheduleDisplay() {
+    scheduleArray.forEach(schedule => {
+        addScheduleUI(schedule);
+    });
+}
 
 addInputButton.addEventListener("click", function () {
     let addedScheduleName = newScheduleInput.value;
