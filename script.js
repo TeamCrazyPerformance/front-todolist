@@ -65,7 +65,6 @@ function changeViewEditMode(viewModeElement, editModeElement, mode) {
     } else if (mode === EDIT_MODE) {
         for (let i = 0; i < viewModeElement.length; i++) {
             viewModeElement[i].replaceWith(editModeElement[i]);
-            console.log("in");
         }
     }
 }
@@ -116,9 +115,19 @@ function addScheduleUI(addedScheduleName) {
     });
 
     editCompleteButton.addEventListener("click", function() {
-        addedScheduleName = editInput.value;
-        scheduleName.innerText = addedScheduleName;
-        changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
+        let editedScheduleName = editInput.value;
+
+        if (editedScheduleName.length === 0) {
+            window.alert("스케줄 이름을 입력해주세요");
+            return;
+        } else if (scheduleArray.some(schedule => checkScheduleExist(schedule, editedScheduleName))) {
+            window.alert("이미 존재하는 스케줄입니다");
+        } else {
+            scheduleArray = scheduleArray.map(schedule => schedule === addedScheduleName? editedScheduleName : schedule);
+            changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
+            removeScheduleDisplay();
+            drawScheduleDisplay();
+        }
     });
 }
 
