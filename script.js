@@ -2,6 +2,7 @@ const PADDING_WITH_SCROLL = "34px";
 const PADDING_WITH_NO_SCROLL = "17px";
 
 const plusButton = document.getElementById("plus_button");
+const alignButton = document.getElementById("align_button");
 const newScheduleInputContainer = document.getElementById("new_schedule_input_container");
 const addInputButton = document.getElementById("add_input_button");
 const cancelInputButton = document.getElementById("cancel_input_button");
@@ -16,11 +17,13 @@ let isScheduleExist;
 function getNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = 'block';
     plusButton.style.display = "none";
+    alignButton.style.display = "none";
 }
 
 function hideNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = "none";
     plusButton.style.display = 'inline';
+    alignButton.style.display = 'inline';
 }
 
 function getScheduleListContainer() {
@@ -35,8 +38,8 @@ function getNoScheduleListContainer() {
     scheduleListContainer.style.display = 'none';
 }
 
-function checkScheduleExist(schedule) {
-    return schedule !== addedScheduleName;
+function checkScheduleExist(schedule, addedScheduleName) {
+    return schedule === addedScheduleName;
 }
 
 function changeContainerStyle() {
@@ -82,16 +85,16 @@ plusButton.addEventListener("click", function () {
     getNewScheduleInputContainer();
 });
 
+
+
 addInputButton.addEventListener("click", function () {
     let addedScheduleName = newScheduleInput.value;
     clearNewScheduleInput();
 
-    
-
     if (addedScheduleName.length === 0) {
         window.alert("스케줄 이름을 입력해주세요");
         return;
-    } else if (scheduleArray.some(checkScheduleExist)) {
+    } else if (scheduleArray.some(schedule => checkScheduleExist(schedule, addedScheduleName))) {
         window.alert("이미 존재하는 스케줄입니다");
     } else {
         addSchedule(addedScheduleName);
