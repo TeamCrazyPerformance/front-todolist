@@ -11,8 +11,22 @@ const noScheduleContainer = document.getElementById("no_schedule_container");
 const scheduleListContainer = document.getElementById("schedule_list_container");
 const ul = document.querySelector("ul");
 
-let scheduleArray = [];
+let scheduleArray;
 let isScheduleExist;
+
+window.onload = function() {
+    scheduleArray = localStorage.length === 0? [] : Array.from(localStorage.getItem("scheduleArray"));
+    scheduleArray = scheduleArray.filter(input => input != ",");
+    console.log(scheduleArray);
+    updateLocalStorage();
+    removeScheduleDisplay();
+    drawScheduleDisplay();
+}
+
+function updateLocalStorage() {
+    localStorage.removeItem("scheduleArray");
+    localStorage.setItem("scheduleArray", scheduleArray);
+}
 
 function getNewScheduleInputContainer() {
     newScheduleInputContainer.style.display = 'block';
@@ -54,6 +68,7 @@ function changeContainerStyle() {
 
 function addSchedule(addedScheduleName) {
     scheduleArray.push(addedScheduleName);
+    updateLocalStorage();
     addScheduleUI(addedScheduleName);
 }
 
@@ -102,6 +117,7 @@ function addScheduleUI(addedScheduleName) {
 
     scheduleDeleteButton.addEventListener("click", function() {
         scheduleArray = scheduleArray.filter(schedule => !checkScheduleExist(schedule, addedScheduleName));
+        updateLocalStorage();
         scheduleContainer.remove();
         changeContainerStyle();
     });
@@ -124,6 +140,7 @@ function addScheduleUI(addedScheduleName) {
             window.alert("이미 존재하는 스케줄입니다");
         } else {
             scheduleArray = scheduleArray.map(schedule => schedule === addedScheduleName? editedScheduleName : schedule);
+            updateLocalStorage();
             changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
             removeScheduleDisplay();
             drawScheduleDisplay();
@@ -142,6 +159,7 @@ function removeScheduleDisplay() {
 }
 
 function drawScheduleDisplay() {
+    changeContainerStyle();
     scheduleArray.forEach(schedule => {
         addScheduleUI(schedule);
     });
@@ -153,7 +171,7 @@ plusButton.addEventListener("click", function () {
 
 alignButton.addEventListener("click", function() {
     scheduleArray.reverse();
-    
+    updateLocalStorage();
     removeScheduleDisplay();
     drawScheduleDisplay();
 });
