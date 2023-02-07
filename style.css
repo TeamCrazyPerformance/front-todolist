@@ -41,24 +41,24 @@ button {
     margin: 9px 15px;
 }
 
-.plus_span {
-    font-weight: 300;
-    font-size: 36px;
-    line-height: 44px;
-    position: fixed;
-    top: -2px;
-    right: 12px;
-}
-
-#plus_button {
+.header_button {
     width: 27px;
     height: 27px;
     border: 1px solid #FFFFFF;
     border-radius: 50%;
     background-color: transparent;
-    position: fixed;
-    top: 9px;
-    right: 11px;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+#plus_button {
+    background-image: url('./image/plus_btn.png');
+    background-position: center;
+}
+
+#align_button {
+    background-image: url('./image/align_vector.svg');
 }
 
 #new_schedule_input_container {
