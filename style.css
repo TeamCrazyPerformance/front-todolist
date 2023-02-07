@@ -148,15 +148,33 @@ li {
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-li>button {
+.list_button_container>button {
+    width: 14.3px;
+    height: 14.3px;
     border: none;
     background-color: transparent;
-    padding: 0;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-li>span, li>button {
+.list_delete_button {
+    background-image: url('./image/delete_btn.png');
+    margin-left: 12px;
+}
+
+.list_edit_button {
+    background-image: url('./image/edit_vector.svg');
+}
+
+.list_button_container {
+    display: flex;
+}
+
+li>span {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;

@@ -61,17 +61,23 @@ function addScheduleUI(addedScheduleName) {
     const scheduleContainer = document.createElement('li');
     const scheduleName = document.createElement('span');
     const scheduleDeleteButton = document.createElement('button');
+    const scheduleEditButton = document.createElement('button');
+    const scheduleButtonContainer = document.createElement('div');
 
     scheduleName.innerText = addedScheduleName;
     scheduleContainer.id = addedScheduleName;
-    scheduleDeleteButton.innerText = "x";
+    scheduleDeleteButton.className = "list_delete_button";
+    scheduleEditButton.className = "list_edit_button";
+    scheduleButtonContainer.className = "list_button_container";
 
     scheduleContainer.appendChild(scheduleName);
-    scheduleContainer.appendChild(scheduleDeleteButton);
+    scheduleButtonContainer.appendChild(scheduleEditButton);
+    scheduleButtonContainer.appendChild(scheduleDeleteButton);
+    scheduleContainer.appendChild(scheduleButtonContainer);
     ul.appendChild(scheduleContainer);
 
     scheduleDeleteButton.addEventListener("click", function () {
-        scheduleArray = scheduleArray.filter();
+        scheduleArray = scheduleArray.filter(schedule => !checkScheduleExist(schedule, addedScheduleName));
         scheduleContainer.remove();
         changeContainerStyle();
     });
@@ -80,17 +86,6 @@ function addScheduleUI(addedScheduleName) {
 function clearNewScheduleInput() {
     newScheduleInput.value = null;
 }
-
-plusButton.addEventListener("click", function () {
-    getNewScheduleInputContainer();
-});
-
-alignButton.addEventListener("click", function() {
-    scheduleArray.reverse();
-    
-    removeScheduleDisplay();
-    drawScheduleDisplay();
-});
 
 function removeScheduleDisplay() {
     while (ul.firstChild) {
@@ -103,6 +98,17 @@ function drawScheduleDisplay() {
         addScheduleUI(schedule);
     });
 }
+
+plusButton.addEventListener("click", function () {
+    getNewScheduleInputContainer();
+});
+
+alignButton.addEventListener("click", function() {
+    scheduleArray.reverse();
+    
+    removeScheduleDisplay();
+    drawScheduleDisplay();
+});
 
 addInputButton.addEventListener("click", function () {
     let addedScheduleName = newScheduleInput.value;
