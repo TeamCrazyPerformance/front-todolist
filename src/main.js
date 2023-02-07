@@ -1,5 +1,8 @@
+import TodoList from "./todo/TodoList.js";
+
 const emptyNotice = document.getElementById("empty-notice");
 const plusButton = document.getElementById("plus-button");
+const todoList = new TodoList();
 let todoNum = 0;
 
 function toggleCreateTodoForm() {
@@ -24,6 +27,7 @@ function createTodo() {
     }
 
     const todo = createTodoElement(todoContent);
+    todoList.addTodo(todoContent);
     appendTodo(todo);
     todoNum++;
 
@@ -85,3 +89,5 @@ function invisiblePlusImage() {
 function visiblePlusImage() {
     plusButton.style.display = "block";
 }
+
+export {toggleCreateTodoForm, createTodo};

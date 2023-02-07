@@ -33,7 +33,11 @@
             <div id="empty-notice">남은 일정이 없어요</div>
         </div>
     </div>
-    <script type=" text/javascript " src="todolist_func.js "></script>
+    <script type="module">
+        import {toggleCreateTodoForm, createTodo} from "./src/main.js";
+        window.toggleCreateTodoForm = toggleCreateTodoForm;
+        window.createTodo = createTodo;
+    </script>
 </body>
 
 </html>
