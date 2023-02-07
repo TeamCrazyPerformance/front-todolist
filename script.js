@@ -1,5 +1,5 @@
-const PADDING_WITH_SCROLL = "34px";
-const PADDING_WITH_NO_SCROLL = "17px";
+const VIEW_MODE = "view_mode";
+const EDIT_MODE = "edit_mode";
 
 const plusButton = document.getElementById("plus_button");
 const alignButton = document.getElementById("align_button");
@@ -57,6 +57,19 @@ function addSchedule(addedScheduleName) {
     addScheduleUI(addedScheduleName);
 }
 
+function changeViewEditMode(viewModeElement, editModeElement, mode) {
+    if (mode === VIEW_MODE) {
+        for (let i = 0; i < viewModeElement.length; i++) {
+            editModeElement[i].replaceWith(viewModeElement[i]);
+        }
+    } else if (mode === EDIT_MODE) {
+        for (let i = 0; i < viewModeElement.length; i++) {
+            viewModeElement[i].replaceWith(editModeElement[i]);
+            console.log("in");
+        }
+    }
+}
+
 function addScheduleUI(addedScheduleName) {
     const scheduleContainer = document.createElement('li');
     const scheduleName = document.createElement('span');
@@ -85,6 +98,9 @@ function addScheduleUI(addedScheduleName) {
     scheduleContainer.appendChild(scheduleButtonContainer);
     ul.appendChild(scheduleContainer);
 
+    const viewModeElement = [scheduleName, scheduleEditButton, scheduleDeleteButton];
+    const editModeElement = [editInput, editCompleteButton, editCancelButton];
+
     scheduleDeleteButton.addEventListener("click", function() {
         scheduleArray = scheduleArray.filter(schedule => !checkScheduleExist(schedule, addedScheduleName));
         scheduleContainer.remove();
@@ -92,9 +108,17 @@ function addScheduleUI(addedScheduleName) {
     });
 
     scheduleEditButton.addEventListener("click", function() {
-        scheduleName.replaceWith(editInput);
-        scheduleEditButton.replaceWith(editCompleteButton);
-        scheduleDeleteButton.replaceWith(editCancelButton);
+        changeViewEditMode(viewModeElement, editModeElement, EDIT_MODE);
+    });
+
+    editCancelButton.addEventListener("click", function() {
+        changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
+    });
+
+    editCompleteButton.addEventListener("click", function() {
+        addedScheduleName = editInput.value;
+        scheduleName.innerText = addedScheduleName;
+        changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
     });
 }
 
