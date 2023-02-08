@@ -1,5 +1,3 @@
-import Todo from "./Todo.js";
-
 export default class TodoList {
 
     constructor() {
