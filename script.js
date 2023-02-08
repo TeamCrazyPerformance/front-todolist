@@ -187,9 +187,8 @@ addInputButton.addEventListener("click", function () {
     } else {
         addSchedule(addedScheduleName);
         changeContainerStyle();
+        hideNewScheduleInputContainer();
     }
-
-    hideNewScheduleInputContainer();
 });
 
 cancelInputButton.addEventListener("click", function () {
