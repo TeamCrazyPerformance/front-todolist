@@ -1,7 +1,9 @@
+const TODOLIST_KEY = "todoList";
+
 export default class TodoList {
 
     constructor() {
-        const todoList = JSON.parse(localStorage.getItem("todoList"));
+        const todoList = JSON.parse(localStorage.getItem(TODOLIST_KEY));
         if (todoList === null) {
             this._todoList = [];
             this._todoId = 1;
@@ -14,7 +16,7 @@ export default class TodoList {
     }
 
     _updateLocalStorage() {
-        localStorage.setItem("todoList", JSON.stringify(this));
+        localStorage.setItem(TODOLIST_KEY, JSON.stringify(this));
     }
 
     addTodo(content) {
