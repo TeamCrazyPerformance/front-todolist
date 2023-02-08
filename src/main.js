@@ -1,8 +1,8 @@
 import {reloadTodoList} from "./todo/common.js";
 import * as header from "./header/header.js";
 import * as edit from "./todo/editTodo.js";
-import * as create from "./todo/createTodo.js"
-import * as remove from "./todo/remove.js"
+import * as create from "./todo/createTodo.js";
+import * as remove from "./todo/removeTodo.js";
 import * as sort from "./todo/sortTodo.js";
 
 function createTodo() {

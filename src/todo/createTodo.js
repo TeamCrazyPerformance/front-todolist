@@ -14,7 +14,7 @@ function createTodo() {
     reloadTodoList();
 
     clearTodoContent(todoContentElement);
-    header.toggleCreateTodoForm()
+    header.toggleCreateTodoForm();
     header.showBtnGroup();
 
     function clearTodoContent(todoContentElement) {

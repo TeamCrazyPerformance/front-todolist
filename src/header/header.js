@@ -5,10 +5,10 @@ function toggleCreateTodoForm() {
 
     if (createTodoForm.style.display === "block") {
         createTodoForm.style.display = "none";
-        showBtnGroup()
+        showBtnGroup();
     } else {
         createTodoForm.style.display = "block";
-        hideBtnGroup()
+        hideBtnGroup();
     }
 }
 

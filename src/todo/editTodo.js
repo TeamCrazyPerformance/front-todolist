@@ -28,7 +28,7 @@ function cancelEdit(todoId) {
     const todoElement = document.getElementById(todoId);
     const todo = todoList.findById(todoId);
 
-    todoElement.innerHTML = getTodoHtml(todo)
+    todoElement.innerHTML = getTodoHtml(todo);
 }
 
 export {showEditTodoForm, editTodo, cancelEdit};

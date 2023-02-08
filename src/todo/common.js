@@ -21,11 +21,11 @@ function reloadTodoList() {
 
 
     function showEmptyNotice() {
-        todoContainer.innerHTML = `<div id="empty-notice">남은 일정이 없어요</div>`
+        todoContainer.innerHTML = `<div id="empty-notice">남은 일정이 없어요</div>`;
     }
 
     function appendTodoElement(todo) {
-        const todoElement = createTodoElement(todo)
+        const todoElement = createTodoElement(todo);
         todoContainer.appendChild(todoElement);
     }
 
