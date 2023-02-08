@@ -1,19 +1,7 @@
 import TodoList from "./todo/TodoList.js";
+import * as header from "./header/header.js";
 
-const plusButton = document.getElementById("plus-button");
 const todoList = new TodoList();
-
-function toggleCreateTodoForm() {
-    const createTodoForm = document.getElementById("todo-form");
-
-    if (createTodoForm.style.display === "block") {
-        createTodoForm.style.display = "none";
-        visiblePlusImage()
-    } else {
-        createTodoForm.style.display = "block";
-        invisiblePlusImage()
-    }
-}
 
 function createTodo() {
     const todoContentElement = document.getElementById("todo-content");
@@ -28,8 +16,8 @@ function createTodo() {
     reloadTodoList();
 
     clearTodoContent(todoContentElement);
-    toggleCreateTodoForm()
-    visiblePlusImage();
+    header.toggleCreateTodoForm()
+    header.visiblePlusImage();
 
     function clearTodoContent(todoContentElement) {
         todoContentElement.value = "";
@@ -63,6 +51,10 @@ function reloadTodoList() {
             <button class="delete-button" onclick="removeTodo(${todo.id})">x</button>`;
         return todoElement;
     }
+
+    function isTodoListEmpty() {
+        return todoList.size() === 0;
+    }
 }
 
 function removeTodo(todoId) {
@@ -70,16 +62,8 @@ function removeTodo(todoId) {
     reloadTodoList();
 }
 
-function isTodoListEmpty() {
-    return todoList.size() === 0;
-}
-
-function invisiblePlusImage() {
-    plusButton.style.display = "none";
-}
-
-function visiblePlusImage() {
-    plusButton.style.display = "block";
+function toggleCreateTodoForm() {
+    header.toggleCreateTodoForm();
 }
 
 reloadTodoList();
