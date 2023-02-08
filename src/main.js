@@ -3,7 +3,6 @@ import TodoList from "./todo/TodoList.js";
 const emptyNotice = document.getElementById("empty-notice");
 const plusButton = document.getElementById("plus-button");
 const todoList = new TodoList();
-let todoNum = 0;
 
 function toggleCreateTodoForm() {
     const createTodoForm = document.getElementById("todo-form");
@@ -26,10 +25,9 @@ function createTodo() {
         return;
     }
 
-    const todo = createTodoElement(todoContent);
-    todoList.addTodo(todoContent);
-    appendTodo(todo);
-    todoNum++;
+    const newTodoId = todoList.addTodo(todoContent);
+    const todo = createTodoElement(todoList.findById(newTodoId));
+    appendTodoElement(todo);
 
     if (!isTodoListEmpty()) {
         removeEmptyNotice();
@@ -40,16 +38,16 @@ function createTodo() {
     visiblePlusImage();
 
 
-    function createTodoElement(todoContent) {
-        const todo = document.createElement("div");
-        todo.className = "todo";
-        todo.innerHTML =
-            `<div class="todo-text">${todoContent}</div>
-            <button class="delete-button" onclick="removeTodo(this)">x</button>`;
-        return todo;
+    function createTodoElement(todo) {
+        const todoElement = document.createElement("div");
+        todoElement.className = "todo";
+        todoElement.innerHTML =
+            `<div class="todo-text">${todo.content}</div>
+            <button class="delete-button" onclick="removeTodo(${todo.id}, this)">x</button>`;
+        return todoElement;
     }
 
-    function appendTodo(todo) {
+    function appendTodoElement(todo) {
         const todoContainer = document.getElementById("todo-container");
         todoContainer.appendChild(todo);
     }
@@ -64,9 +62,9 @@ function createTodo() {
 
 }
 
-function removeTodo(deleteButton) {
+function removeTodo(todoId, deleteButton) {
     deleteButton.parentElement.remove();
-    todoNum--;
+    todoList.removeById(todoId)
 
     if (isTodoListEmpty()) {
         showEmptyNotice();
@@ -78,7 +76,7 @@ function removeTodo(deleteButton) {
 }
 
 function isTodoListEmpty() {
-    return todoNum === 0;
+    return todoList.size() === 0;
 }
 
 
@@ -90,4 +88,4 @@ function visiblePlusImage() {
     plusButton.style.display = "block";
 }
 
-export {toggleCreateTodoForm, createTodo};
+export {toggleCreateTodoForm, createTodo, removeTodo};
