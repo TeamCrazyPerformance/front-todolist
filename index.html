@@ -40,10 +40,12 @@
         </div>
     </div>
     <script type="module">
-        import {toggleCreateTodoForm, createTodo, removeTodo} from "./src/main.js";
-        window.toggleCreateTodoForm = toggleCreateTodoForm;
-        window.createTodo = createTodo;
-        window.removeTodo = removeTodo;
+        import * as main from "./src/main.js";
+        window.toggleCreateTodoForm = main.toggleCreateTodoForm;
+        window.createTodo = main.createTodo;
+        window.removeTodo = main.removeTodo;
+        window.showEditTodoForm = main.showEditTodoForm;
+        window.cancelEdit = main.cancelEdit;
     </script>
 </body>
 

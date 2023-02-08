@@ -24,6 +24,26 @@ function createTodo() {
     }
 }
 
+function showEditTodoForm(todoId) {
+    const todoElement = document.getElementById(todoId);
+    const todo = todoList.findById(todoId);
+
+    todoElement.innerHTML =
+        `<input id="todo-edit-input" value="${todo.content}"></input>
+        <div class="edit-btn-group">
+            <button id="edit-todo" onclick="">수정</button>
+            <button id="cancel-edit-todo" onclick="cancelEdit(${todo.id})">취소</button>
+        </div>`;
+
+}
+
+function cancelEdit(todoId) {
+    const todoElement = document.getElementById(todoId);
+    const todo = todoList.findById(todoId);
+
+    todoElement.innerHTML = getTodoHtml(todo)
+}
+
 function reloadTodoList() {
     const todoContainer = document.getElementById("todo-container");
     todoContainer.innerHTML = "";
@@ -46,18 +66,22 @@ function reloadTodoList() {
     function createTodoElement(todo) {
         const todoElement = document.createElement("div");
         todoElement.className = "todo";
-        todoElement.innerHTML =
-            `<div class="todo-text">${todo.content}</div>
-            <div class="todo-btn-group">
-                <button class="todo-btn" onclick=""><img src="image/edit.png" alt="편집"></button>
-                <button class="todo-btn" onclick="removeTodo(${todo.id})">x</button>
-            </div>`;
+        todoElement.id = todo.id;
+        todoElement.innerHTML = getTodoHtml(todo);
         return todoElement;
     }
 
     function isTodoListEmpty() {
         return todoList.size() === 0;
     }
+}
+
+function getTodoHtml(todo) {
+    return `<div class="todo-text">${todo.content}</div>
+            <div class="todo-btn-group">
+                <button class="todo-btn" onclick="showEditTodoForm(${todo.id})"><img src="image/edit.png" alt="편집"></button>
+                <button class="todo-btn" onclick="removeTodo(${todo.id})">x</button>
+            </div>`;
 }
 
 function removeTodo(todoId) {
@@ -71,4 +95,4 @@ function toggleCreateTodoForm() {
 
 reloadTodoList();
 
-export {toggleCreateTodoForm, createTodo, removeTodo};
+export {toggleCreateTodoForm, createTodo, removeTodo, showEditTodoForm, cancelEdit};
