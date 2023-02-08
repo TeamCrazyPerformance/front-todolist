@@ -48,7 +48,10 @@ function reloadTodoList() {
         todoElement.className = "todo";
         todoElement.innerHTML =
             `<div class="todo-text">${todo.content}</div>
-            <button class="delete-button" onclick="removeTodo(${todo.id})">x</button>`;
+            <div class="todo-btn-group">
+                <button class="todo-btn" onclick=""><img src="image/edit.png" alt="편집"></button>
+                <button class="todo-btn" onclick="removeTodo(${todo.id})">x</button>
+            </div>`;
         return todoElement;
     }
 

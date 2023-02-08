@@ -31,6 +31,7 @@ button {
 
 .todo {
     display: flex;
+    height: 1rem;
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
@@ -43,9 +44,18 @@ button {
     font-size: 20px;
 }
 
-.delete-button {
+.todo-btn-group {
+    height: 100%;
+}
+
+.todo-btn {
+    height: 100%;
     border: none;
     background: #FFFFFF;
+}
+
+.todo-btn img {
+    max-height: 100%;
 }
 
 #new-todo {
