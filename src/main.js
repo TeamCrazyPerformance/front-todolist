@@ -91,7 +91,7 @@ function getTodoHtml(todo) {
     return `<div class="todo-text">${todo.content}</div>
             <div class="todo-btn-group">
                 <button class="todo-btn" onclick="showEditTodoForm(${todo.id})"><img src="image/edit.png" alt="편집"></button>
-                <button class="todo-btn" onclick="removeTodo(${todo.id})">x</button>
+                <button class="todo-btn" onclick="removeTodo(${todo.id})">X</button>
             </div>`;
 }
 
