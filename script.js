@@ -15,7 +15,7 @@ let scheduleArray;
 let isScheduleExist;
 
 window.onload = function() {
-    scheduleArray = localStorage.length === 0? [] : Array.from(localStorage.getItem("scheduleArray"));
+    scheduleArray = localStorage.length === 0? [] : localStorage.getItem("scheduleArray").split(",");
     scheduleArray = scheduleArray.filter(input => input != ",");
     console.log(scheduleArray);
     updateLocalStorage();
