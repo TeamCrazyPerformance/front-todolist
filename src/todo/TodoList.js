@@ -38,6 +38,11 @@ export default class TodoList {
         return this._todoList.length;
     }
 
+    editById(todoId, content) {
+        this._todoList.filter(todo => todo.id === todoId)
+            .map(todo => todo.content = content);
+    }
+
     get todoList() {
         return this._todoList;
     }

@@ -29,12 +29,23 @@ function showEditTodoForm(todoId) {
     const todo = todoList.findById(todoId);
 
     todoElement.innerHTML =
-        `<input id="todo-edit-input" value="${todo.content}"></input>
+        `<input id="todo-edit-input${todo.id}" value="${todo.content}">
         <div class="edit-btn-group">
-            <button id="edit-todo" onclick="">수정</button>
+            <button id="edit-todo" onclick="editTodo(${todo.id})">수정</button>
             <button id="cancel-edit-todo" onclick="cancelEdit(${todo.id})">취소</button>
         </div>`;
+}
 
+function editTodo(todoId) {
+    const todoElement = document.getElementById(todoId);
+    const editContent = document.getElementById(`todo-edit-input${todoId}`).value;
+
+    if (editContent === "") {
+        alert("내용을 입력해주세요");
+        return;
+    }
+    todoList.editById(todoId, editContent);
+    todoElement.innerHTML = getTodoHtml(todoList.findById(todoId));
 }
 
 function cancelEdit(todoId) {
@@ -95,4 +106,4 @@ function toggleCreateTodoForm() {
 
 reloadTodoList();
 
-export {toggleCreateTodoForm, createTodo, removeTodo, showEditTodoForm, cancelEdit};
+export {toggleCreateTodoForm, createTodo, removeTodo, showEditTodoForm, cancelEdit, editTodo};
