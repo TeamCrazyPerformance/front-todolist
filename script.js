@@ -158,11 +158,9 @@ function removeScheduleDisplay() {
 
 function drawScheduleDisplay() {
     changeContainerStyle();
-    if (scheduleArray.length > 0) {
-        scheduleArray.forEach(schedule => {
-            addScheduleUI(schedule);
-        });
-    }
+    scheduleArray.forEach(schedule => {
+        addScheduleUI(schedule);
+    });   
 }
 
 plusButton.addEventListener("click", function () {
