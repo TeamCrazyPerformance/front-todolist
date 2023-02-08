@@ -12,6 +12,7 @@ html, body {
 }
 
 button {
+    border: none;
     background: transparent;
     cursor: pointer;
 }
@@ -50,7 +51,6 @@ button {
 
 .todo-btn {
     height: 100%;
-    border: none;
     background: #FFFFFF;
 }
 

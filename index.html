@@ -14,9 +14,14 @@
         <header id="head">
             <div class="container">
                 <div class="todo-logo">TODO LIST</div>
-                <button id="plus-button" onclick="toggleCreateTodoForm()">
-                    <img style="max-width:100%; max-height: 100%" src="image\plusbutton.png">
-                </button>
+                <div class="header-btn-group">
+                    <button id="sort-button" onclick="">
+                        <img src="image/sort.png" alt="정렬">
+                    </button>
+                    <button id="plus-button" onclick="toggleCreateTodoForm()">
+                        <img src="image/plus.png" alt="추가">
+                    </button>
+                </div>
             </div>
             <div id="todo-form">
                 <div id="new-todo">새로운 일정</div>

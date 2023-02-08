@@ -1,7 +1,7 @@
 #head {
     position: sticky;
     top: 0;
-    background: #2C2C2C;
+    background: black;
     color: #FFFFFF;
 }
 
@@ -12,11 +12,33 @@
 }
 
 .container {
+    height: 40px;
     padding: 20px 20px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.header-btn-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px
+}
+
+.header-btn-group button {
+    width: 30px;
+    height: 30px;
+    padding: 0
+}
+
+.header-btn-group button img {
+    max-width: 100%;
+    max-height: 100%;
+    border: solid;
+    border-radius: 50%;
+    color: white;
 }
 
 #todo-form {
@@ -26,7 +48,6 @@
 }
 
 #plus-button {
-    border: none;
     padding: 0;
     width: 30px;
     height: 30px;
