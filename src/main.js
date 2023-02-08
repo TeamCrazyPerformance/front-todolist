@@ -1,6 +1,5 @@
 import TodoList from "./todo/TodoList.js";
 
-const emptyNotice = document.getElementById("empty-notice");
 const plusButton = document.getElementById("plus-button");
 const todoList = new TodoList();
 
@@ -25,60 +24,55 @@ function createTodo() {
         return;
     }
 
-    const newTodoId = todoList.addTodo(todoContent);
-    const todo = createTodoElement(todoList.findById(newTodoId));
-    appendTodoElement(todo);
-
-    if (!isTodoListEmpty()) {
-        removeEmptyNotice();
-    }
+    todoList.addTodo(todoContent);
+    reloadTodoList();
 
     clearTodoContent(todoContentElement);
     toggleCreateTodoForm()
     visiblePlusImage();
 
+    function clearTodoContent(todoContentElement) {
+        todoContentElement.value = "";
+    }
+}
+
+function reloadTodoList() {
+    const todoContainer = document.getElementById("todo-container");
+    todoContainer.innerHTML = "";
+    if (isTodoListEmpty()) {
+        showEmptyNotice();
+        return;
+    }
+    todoList.todoList.forEach(todo => appendTodoElement(todo));
+
+
+    function showEmptyNotice() {
+        todoContainer.innerHTML = `<div id="empty-notice">남은 일정이 없어요</div>`
+    }
+
+    function appendTodoElement(todo) {
+        const todoElement = createTodoElement(todo)
+        todoContainer.appendChild(todoElement);
+    }
 
     function createTodoElement(todo) {
         const todoElement = document.createElement("div");
         todoElement.className = "todo";
         todoElement.innerHTML =
             `<div class="todo-text">${todo.content}</div>
-            <button class="delete-button" onclick="removeTodo(${todo.id}, this)">x</button>`;
+            <button class="delete-button" onclick="removeTodo(${todo.id})">x</button>`;
         return todoElement;
     }
-
-    function appendTodoElement(todo) {
-        const todoContainer = document.getElementById("todo-container");
-        todoContainer.appendChild(todo);
-    }
-
-    function clearTodoContent(todoContentElement) {
-        todoContentElement.value = "";
-    }
-
-    function removeEmptyNotice() {
-        emptyNotice.style.display = "none";
-    }
-
 }
 
-function removeTodo(todoId, deleteButton) {
-    deleteButton.parentElement.remove();
+function removeTodo(todoId) {
     todoList.removeById(todoId)
-
-    if (isTodoListEmpty()) {
-        showEmptyNotice();
-    }
-
-    function showEmptyNotice() {
-        emptyNotice.style.display = "flex";
-    }
+    reloadTodoList();
 }
 
 function isTodoListEmpty() {
     return todoList.size() === 0;
 }
-
 
 function invisiblePlusImage() {
     plusButton.style.display = "none";
@@ -87,5 +81,7 @@ function invisiblePlusImage() {
 function visiblePlusImage() {
     plusButton.style.display = "block";
 }
+
+reloadTodoList();
 
 export {toggleCreateTodoForm, createTodo, removeTodo};
