@@ -43,6 +43,7 @@ export default class TodoList {
     editById(todoId, content) {
         this._todoList.filter(todo => todo.id === todoId)
             .map(todo => todo.content = content);
+        this._updateLocalStorage();
     }
 
     sort() {
