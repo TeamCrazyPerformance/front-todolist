@@ -1,23 +1,23 @@
-const plusButton = document.getElementById("plus-button");
+const btnGroup = document.getElementById("header-btn-group");
 
 function toggleCreateTodoForm() {
     const createTodoForm = document.getElementById("todo-form");
 
     if (createTodoForm.style.display === "block") {
         createTodoForm.style.display = "none";
-        visiblePlusImage()
+        showBtnGroup()
     } else {
         createTodoForm.style.display = "block";
-        invisiblePlusImage()
+        hideBtnGroup()
     }
 }
 
-function invisiblePlusImage() {
-    plusButton.style.display = "none";
+function hideBtnGroup() {
+    btnGroup.style.display = "none";
 }
 
-function visiblePlusImage() {
-    plusButton.style.display = "block";
+function showBtnGroup() {
+    btnGroup.style.display = "flex";
 }
 
-export {toggleCreateTodoForm, invisiblePlusImage, visiblePlusImage};
+export {toggleCreateTodoForm, hideBtnGroup, showBtnGroup};

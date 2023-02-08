@@ -17,7 +17,7 @@ function createTodo() {
 
     clearTodoContent(todoContentElement);
     header.toggleCreateTodoForm()
-    header.visiblePlusImage();
+    header.showBtnGroup();
 
     function clearTodoContent(todoContentElement) {
         todoContentElement.value = "";
