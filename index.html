@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="todo-logo">TODO LIST</div>
                 <div id="header-btn-group">
-                    <button id="sort-button" onclick="">
+                    <button id="sort-button" onclick="sortTodoList()">
                         <img src="image/sort.png" alt="정렬">
                     </button>
                     <button id="plus-button" onclick="toggleCreateTodoForm()">
@@ -47,6 +47,7 @@
         window.showEditTodoForm = main.showEditTodoForm;
         window.cancelEdit = main.cancelEdit;
         window.editTodo = main.editTodo;
+        window.sortTodoList = main.sortTodoList;
     </script>
 </body>
 

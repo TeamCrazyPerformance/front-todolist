@@ -5,9 +5,11 @@ export default class TodoList {
         if (todoList === null) {
             this._todoList = [];
             this._todoId = 1;
+            this._asc = false;
         } else {
-            this._todoList = todoList._todoList
-            this._todoId = todoList._todoId
+            this._todoList = todoList._todoList;
+            this._todoId = todoList._todoId;
+            this._asc = todoList._asc;
         }
     }
 
@@ -41,6 +43,24 @@ export default class TodoList {
     editById(todoId, content) {
         this._todoList.filter(todo => todo.id === todoId)
             .map(todo => todo.content = content);
+    }
+
+    sort() {
+        if (this._asc) {
+            this._todoList.sort((a, b) => {
+                if (a.content.toUpperCase() < b.content.toUpperCase()) return 1;
+                if (a.content.toUpperCase() === b.content.toUpperCase()) return 0;
+                if (a.content.toUpperCase() > b.content.toUpperCase()) return -1;
+            });
+        } else {
+            this._todoList.sort((a, b) => {
+                if (a.content.toUpperCase() < b.content.toUpperCase()) return -1;
+                if (a.content.toUpperCase() === b.content.toUpperCase()) return 0;
+                if (a.content.toUpperCase() > b.content.toUpperCase()) return 1;
+            });
+        }
+        this._asc = !this._asc;
+        this._updateLocalStorage();
     }
 
     get todoList() {
