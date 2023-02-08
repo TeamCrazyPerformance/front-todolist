@@ -16,8 +16,7 @@ let isScheduleExist;
 
 window.onload = function() {
     scheduleArray = localStorage.length === 0? [] : localStorage.getItem("scheduleArray").split(",");
-    scheduleArray = scheduleArray.filter(input => input != ",");
-    console.log(scheduleArray);
+    scheduleArray = scheduleArray.filter(schedule => schedule !== "");
     updateLocalStorage();
     removeScheduleDisplay();
     drawScheduleDisplay();
@@ -160,9 +159,11 @@ function removeScheduleDisplay() {
 
 function drawScheduleDisplay() {
     changeContainerStyle();
-    scheduleArray.forEach(schedule => {
-        addScheduleUI(schedule);
-    });
+    if (scheduleArray.length > 0) {
+        scheduleArray.forEach(schedule => {
+            addScheduleUI(schedule);
+        });
+    }
 }
 
 plusButton.addEventListener("click", function () {
