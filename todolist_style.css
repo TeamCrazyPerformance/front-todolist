@@ -43,6 +43,17 @@ body {
     cursor: pointer;
 }
 
+#sort-button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.firstbuttongroup {
+    display: flex;
+    justify-content: space-between;
+}
+
 .input-line {
     padding-bottom: 10px;
     display: flex;
@@ -76,7 +87,7 @@ body {
 }
 
 .todo-text {
-    ㅠ font-size: 20px;
+    font-size: 20px;
 }
 
 .delete-button {
@@ -87,4 +98,32 @@ body {
 
 #new-schedule {
     padding-bottom: 10px;
+}
+
+.edit-button {
+    background-image: url(editButton.png);
+    cursor: pointer;
+    border: none;
+    background: #FFFFFF;
+}
+
+.todo_item .edit_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: none;
+}
+
+.todo_item.edit_active .edit_wrap {
+    display: block;
+}
+
+.editbuttons {
+    display: none;
+}
+
+.amendbuttons {
+    display: none;
 }

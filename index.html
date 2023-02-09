@@ -11,15 +11,20 @@
     <header id="head">
         <div class="container">
             <div class="todo-logo">TODO LIST</div>
-            <img id="plus-button" src="plusbutton.png" onclick="toggleCreateTodoForm()">
+            <div class="firtstbuttongroup">
+                <img id="sort-button" src="sortbutton.png" onclick="sortTodoForm()">
+                <img id="plus-button" src="plusbutton.png" onclick="toggleCreateTodoForm()">
+            </div>
         </div>
         <div id="todo-form">
             <div id="new-schedule">새로운 일정</div>
             <div class='input-line'>
-                <input type="text" id="todo-content">
+                <input type="text" placeholder="여기에 입력해주세요!" id="todo-content">
                 <div class='button-group'>
                     <input type='button' class="add-cancel-btn" value="추가" id="addbutton" onclick='createTodo()'>
                     <input type='button' class="add-cancel-btn" value="취소" id="cancelbutton" onclick='toggleCreateTodoForm()'>
+
+
                 </div>
             </div>
         </div>
