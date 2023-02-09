@@ -43,18 +43,36 @@ ul {
     align-items: center;
 }
 
-.add-btn {
+.btn-container {
     position: absolute;
     right:0;
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+.btn-in-header {
     width: 30px;
     height: 30px;
     display: inline-block;
     margin: 10px;
     color: white;
-    background-color: red;
-    border: white;
+    border: 1px solid white;
+    background-color: #2C2C2C;
     border-radius: 50%;
     cursor: pointer;
+    font-size: 25px;
+    padding: 0;
+}
+
+#sort-btn {
+    cursor: pointer;
+    background-color: transparent;
+}
+.sort-img {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border-radius: 50%;
 }
 
 .add-todo {
@@ -104,8 +122,23 @@ ul {
     margin: 0;
     font-size: 18px;
 }
+.edit-btn{
+    position: absolute;
+    top:25px;
+    right: 40px;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    box-shadow: none;
+    border: 0;
+}
+.edit-img{
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    cursor: pointer;
+}
 .todo-text {
-    display: inline-block;
     position: absolute;
     left: 5px;
     top:20px;
@@ -118,3 +151,38 @@ ul {
     height: 400px;
     padding-top: 40%;
 }
+
+.edit-input{
+    position: absolute;
+    left: 5px;
+    top:20px;
+    width: 40%;
+    height: 25px;
+}
+.cancel-edit-btn {
+    position: absolute;
+    right: 10px;
+    height: 25px;
+    width: 50px;
+    margin-top: 2.5%;
+    color: white;
+    border: none;
+    background-color: black;
+    border-radius: 10%;
+    cursor: pointer;
+}
+.complete-edit-btn {
+    position: absolute;
+    right: 15%;
+    margin-top: 2.5%;
+    height: 25px;
+    width: 50px;
+    color: white;
+    border: none;
+    background-color: black;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+
+
