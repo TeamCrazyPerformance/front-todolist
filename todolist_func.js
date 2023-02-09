@@ -1,5 +1,9 @@
 const emptyNotice = document.getElementById('empty-notice');
 const plusButton = document.getElementById('plus-button');
+const sortbutton = document.getElementById('sort-button');
+const editbuttons = document.getElementById('editbuttons');
+const amendbuttons = document.getElementById('amendbuttons');
+const firstbuttons = document.getElementById('firtstbuttongroup');
 let todoNum = 0;
 
 function toggleCreateTodoForm() {
@@ -43,7 +47,9 @@ function createTodo() {
         todo.className = "todo";
         todo.innerHTML =
             `<div class='todo-text'>${todoContent}</div>
-            <button class='delete-button' onclick='removeSchedule(this)'>x</button>`;
+            <button class="editbuttons" onclick='check1()'><img src="editbutton.png" alt="편집버튼"></button>
+            <button class="editbuttons" onclick='removeSchedule(this)'><img src="cancelbutton.png" alt="삭제버튼"></button>
+            `;
         return todo;
     }
 
@@ -81,9 +87,22 @@ function isTodoListEmpty() {
 
 
 function invisiblePlusImage() {
-    plusButton.style.display = 'none';
+    firstbuttons.style.display = 'none';
+
 }
 
 function visiblePlusImage() {
-    plusButton.style.display = 'block';
+    firstbuttons.style.display = 'flex';
+}
+
+
+//편집창 활성화
+function check1() {
+    console.log("222hihihihhi");
+    const todocon = document.getElementById(todoContent);
+
+    todocon.innerHTML =
+        `<div class='todo-text'>${todoContent}</div>
+        <button class="editbuttons" onclick='check1()'>수정</button>
+        <button class="editbuttons" onclick='removeSchedule(this)'>취소</button>`;
 }
