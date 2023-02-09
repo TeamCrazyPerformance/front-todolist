@@ -90,7 +90,7 @@ body {
     font-size: 20px;
 }
 
-.delete-button {
+#delete-button {
     cursor: pointer;
     border: none;
     background: #FFFFFF;
@@ -100,30 +100,10 @@ body {
     padding-bottom: 10px;
 }
 
-.edit-button {
-    background-image: url(editButton.png);
+.editbuttons {
     cursor: pointer;
     border: none;
     background: #FFFFFF;
-}
-
-.todo_item .edit_wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    display: none;
-}
-
-.todo_item.edit_active .edit_wrap {
-    display: block;
-}
-
-.editbuttons {
-    display: none;
-}
-
-.amendbuttons {
-    display: none;
+    display: flex;
+    justify-content: space-between;
 }
