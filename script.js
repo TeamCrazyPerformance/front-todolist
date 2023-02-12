@@ -136,7 +136,9 @@ function addScheduleUI(addedScheduleName) {
 
         if (editedScheduleName.length === 0) {
             window.alert("스케줄 이름을 입력해주세요");
-        } else if (scheduleArray.some(schedule => checkScheduleExist(schedule, editedScheduleName))) {
+        } else if (addedScheduleName === editedScheduleName) {
+            window.alert("스케줄 변경이 없습니다. 스케줄 변경을 취소하시려면 취소 버튼을 눌러주세요.");
+         }else if (scheduleArray.some(schedule => checkScheduleExist(schedule, editedScheduleName))) {
             window.alert("이미 존재하는 스케줄입니다");
         } else {
             scheduleArray = scheduleArray.map(schedule => schedule === addedScheduleName? editedScheduleName : schedule);
