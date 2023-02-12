@@ -132,7 +132,7 @@ function addScheduleUI(addedScheduleName) {
     });
 
     editCompleteButton.addEventListener("click", function() {
-        let editedScheduleName = editInput.value;
+        const editedScheduleName = editInput.value;
 
         if (editedScheduleName.length === 0) {
             window.alert("스케줄 이름을 입력해주세요");
