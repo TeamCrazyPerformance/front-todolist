@@ -15,8 +15,8 @@ let scheduleArray;
 let isScheduleExist;
 
 window.onload = function() {
-    scheduleArray = localStorage.length === 0? [] : localStorage.getItem("scheduleArray").split(",");
-    scheduleArray = scheduleArray.filter(schedule => schedule !== "");
+    scheduleArray = localStorage.getItem("scheduleArray").length === 0? [] : JSON.parse(localStorage.getItem("scheduleArray"));
+    //scheduleArray = scheduleArray.filter(schedule => schedule !== "");
     updateLocalStorage();
     removeScheduleDisplay();
     drawScheduleDisplay();
@@ -24,7 +24,9 @@ window.onload = function() {
 
 function updateLocalStorage() {
     localStorage.removeItem("scheduleArray");
-    localStorage.setItem("scheduleArray", scheduleArray);
+    localStorage.setItem("scheduleArray", JSON.stringify(scheduleArray));
+    console.log(scheduleArray);
+    console.log(typeof(scheduleArray));
 }
 
 function getNewScheduleInputContainer() {
