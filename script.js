@@ -3,7 +3,7 @@ const EDIT_MODE = "edit_mode";
 
 const plusButton = document.getElementById("plus_button");
 const alignButton = document.getElementById("align_button");
-const newScheduleInputContainer = document.getElementById("sub-header");
+const subHeader = document.getElementById("sub-header");
 const addInputButton = document.getElementById("add_input_button");
 const cancelInputButton = document.getElementById("cancel_input_button");
 const newScheduleInput = document.getElementById("sub-header__input");
@@ -29,28 +29,26 @@ function updateLocalStorage() {
     console.log(typeof(scheduleArray));
 }
 
-function getNewScheduleInputContainer() {
-    newScheduleInputContainer.style.display = 'block';
-    plusButton.style.display = "none";
-    alignButton.style.display = "none";
+function getSubHeader() {
+    subHeader.className = "sub-header--show";
+    plusButton.classList.toggle("main-header__button--hide");
+    alignButton.classList.toggle("main-header__button--hide");
 }
 
-function hideNewScheduleInputContainer() {
-    newScheduleInputContainer.style.display = "none";
-    plusButton.style.display = 'inline';
-    alignButton.style.display = 'inline';
+function hideSubHeader() {
+    subHeader.className = "sub-header--hide";
+    plusButton.classList.toggle("main-header__button--hide");
+    alignButton.classList.toggle("main-header__button--hide");
 }
 
 function getScheduleListContainer() {
-    scheduleListContainer.style.display = 'flex';
-    scheduleListContainer.style.flex = 1;
-    noScheduleContainer.style.display = 'none';
+    scheduleListContainer.className = "schedule-list-section--show";
+    noScheduleContainer.className = "no-schedule-section--hide";
 }
 
 function getNoScheduleListContainer() {
-    noScheduleContainer.style.display = 'flex';
-    noScheduleContainer.style.flex = 1;
-    scheduleListContainer.style.display = 'none';
+    scheduleListContainer.className = "schedule-list-section--hide";
+    noScheduleContainer.className = "no-schedule-section--show";
 }
 
 function checkScheduleExist(schedule, addedScheduleName) {
@@ -168,7 +166,7 @@ function drawScheduleDisplay() {
 }
 
 plusButton.addEventListener("click", function () {
-    getNewScheduleInputContainer();
+    getSubHeader();
 });
 
 alignButton.addEventListener("click", function() {
@@ -189,11 +187,11 @@ addInputButton.addEventListener("click", function () {
     } else {
         addSchedule(addedScheduleName);
         changeContainerStyle();
-        hideNewScheduleInputContainer();
+        hideSubHeader();
     }
 });
 
 cancelInputButton.addEventListener("click", function () {
     clearNewScheduleInput();
-    hideNewScheduleInputContainer();
+    hideSubHeader();
 });

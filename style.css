@@ -50,9 +50,6 @@ button {
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-}
-
-.main-header__button--show {
     display: inline;
 }
 
@@ -71,8 +68,15 @@ button {
 #sub-header {
     width: 100%;
     height: 75px;
-    display: none;
     background: #2C2C2C;
+}
+
+.sub-header--show {
+    display: block;
+}
+
+.sub-header--hide {
+    display: none;
 }
 
 .sub-header__label,
@@ -98,18 +102,6 @@ button {
     margin-right: 20px;
 }
 
-.sub-header {
-    display: flex;
-}
-
-.sub-header--show {
-    display: flex;
-}
-
-.sub-header--hide {
-    display: none;
-}
-
 .sub-header__button {
     box-sizing: border-box;
     width: 55px;
@@ -131,11 +123,11 @@ main {
 #no-schedule-section {
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
 .no-schedule-section--show {
     display: flex;
-    flex: 1;
 }
 
 .no-schedule-section--hide {
@@ -143,8 +135,7 @@ main {
 }
 
 #schedule-list-section {
-    flex: 0;
-    display: flex;
+    flex: 1;
     justify-content: flex-start;
     flex-direction: column;
     overflow: auto;
@@ -153,7 +144,6 @@ main {
 
 .schedule-list-section--show {
     display: flex;
-    flex: 1;
 }
 
 .schedule-list-section--hide {
