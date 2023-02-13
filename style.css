@@ -26,14 +26,14 @@ button {
     cursor: pointer;
 }
 
-.top_container {
+.main-header {
     max-height: 46px;
     display: flex;
     justify-content: space-between;
     padding: 9px 12px 10px 11px;
 }
 
-.logo {
+.main-header__title {
     display: inline-block;
     font-weight: 700;
     font-size: 24px;
@@ -41,7 +41,7 @@ button {
     height: calc(100% - 18px);
 }
 
-.header_button {
+.main-header__button {
     width: 27px;
     height: 27px;
     border: 1px solid #FFFFFF;
@@ -52,6 +52,14 @@ button {
     background-repeat: no-repeat;
 }
 
+.main-header__button--show {
+    display: inline;
+}
+
+.main-header__button--hide {
+    display: none;
+}
+
 #plus_button {
     background-image: url('./image/plus_btn.png');
 }
@@ -60,41 +68,49 @@ button {
     background-image: url('./image/align_vector.svg');
 }
 
-#new_schedule_input_container {
+#sub-header {
     width: 100%;
     height: 75px;
     display: none;
     background: #2C2C2C;
 }
 
-.new_schedule_input_label,
-.black_text_button {
+.sub-header__label,
+.sub-header__button {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
 }
 
-.new_schedule_input_label {
+.sub-header__label {
     padding: 4px 0px 0px 11px;
 }
 
-.input_and_buttons_container {
+.sub-header__content {
     display: flex;
     padding: 12px 15px 15px 11px;
 }
 
-#new_schedule_input {
+#sub-header__input {
     height: 25px;
     flex: auto;
     background: #F5F5F5;
     margin-right: 20px;
 }
 
-.new_schedule_input_button_container {
+.sub-header {
     display: flex;
 }
 
-.black_text_button {
+.sub-header--show {
+    display: flex;
+}
+
+.sub-header--hide {
+    display: none;
+}
+
+.sub-header__button {
     box-sizing: border-box;
     width: 55px;
     background: #000000;
@@ -112,14 +128,21 @@ main {
     height: calc(100vh - 46px - 75px);
 }
 
-#no_schedule_container {
-    flex: 1;
-    display: flex;
+#no-schedule-section {
     align-items: center;
     justify-content: center;
 }
 
-#schedule_list_container {
+.no-schedule-section--show {
+    display: flex;
+    flex: 1;
+}
+
+.no-schedule-section--hide {
+    display: none;
+}
+
+#schedule-list-section {
     flex: 0;
     display: flex;
     justify-content: flex-start;
@@ -128,7 +151,17 @@ main {
     overflow-x: hidden;
 }
 
-.no_schedule_span {
+.schedule-list-section--show {
+    display: flex;
+    flex: 1;
+}
+
+.schedule-list-section--hide {
+    display: none;
+}
+
+
+.no-schedule-section__text {
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;

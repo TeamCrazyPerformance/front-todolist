@@ -3,12 +3,12 @@ const EDIT_MODE = "edit_mode";
 
 const plusButton = document.getElementById("plus_button");
 const alignButton = document.getElementById("align_button");
-const newScheduleInputContainer = document.getElementById("new_schedule_input_container");
+const newScheduleInputContainer = document.getElementById("sub-header");
 const addInputButton = document.getElementById("add_input_button");
 const cancelInputButton = document.getElementById("cancel_input_button");
-const newScheduleInput = document.getElementById("new_schedule_input");
-const noScheduleContainer = document.getElementById("no_schedule_container");
-const scheduleListContainer = document.getElementById("schedule_list_container");
+const newScheduleInput = document.getElementById("sub-header__input");
+const noScheduleContainer = document.getElementById("no-schedule-section");
+const scheduleListContainer = document.getElementById("schedule-list-section");
 const ul = document.querySelector("ul");
 
 let scheduleArray;

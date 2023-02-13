@@ -10,33 +10,35 @@
 
 <body>
   <header>
-    <section class="top_container">
-      <span class="logo">TODO LIST</span>
-      <div class="header_button_container">
-        <button type="button" class="header_button" id="align_button" alt="align_button" title="align_button"></button>
-        <button type="button" class="header_button" id="plus_button" alt="plus_button" title="plus_button"></button>
+    <section class="main-header">
+      <span class="main-header__title">TODO LIST</span>
+      <div class="main-header__button-container">
+        <button type="button" class="main-header__button main-header__button--show" id="align_button" alt="align_button" title="align_button"></button>
+        <button type="button" class="main-header__button main-header__button--show" id="plus_button" alt="plus_button" title="plus_button"></button>
       </div>
     </section>
 
-    <section id="new_schedule_input_container">
-      <label for="new_schedule_input" class="new_schedule_input_label"><span>새로운 일정</span></label>
-      <div class="input_and_buttons_container">
-        <input type="text" id="new_schedule_input">
-        <div class="new_schedule_input_button_container">
-          <button type="submit" class="black_text_button" id="add_input_button"><span>추가</span></button>
-          <button type="submit" class="black_text_button" id="cancel_input_button"><span>취소</span></button>
+    <section id="sub-header" class="sub-header--hide">
+      <label for="sub-header__input" class="sub-header__label"><span>새로운 일정</span></label>
+      <div class="sub-header__content">
+        <input type="text" id="sub-header__input">
+        <div class="sub-header__button-container">
+          <button type="submit" class="sub-header__button" id="add_input_button"><span>추가</span></button>
+          <button type="submit" class="sub-header__button" id="cancel_input_button"><span>취소</span></button>
         </div>
       </div>
     </section>
   </header>
 
   <main>
-    <section id="no_schedule_container">
-      <span class="no_schedule_span">남은 일정이 없어요</span>
+    <section id="no-schedule-section" class="no-schedule-section--show">
+      <span class="no-schedule-section__text">남은 일정이 없어요</span>
     </section>
 
-    <section id="schedule_list_container">
-      <ul></ul>
+    <section id="schedule-list-section" class="schedule-list-section--hide">
+      <ul>
+
+      </ul>
     </section>
   </main>
 </body>
