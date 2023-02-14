@@ -1,4 +1,3 @@
-let cnt = 0
 localStorage.setItem("cnt",0);
 
 function main (){
@@ -16,7 +15,7 @@ function main (){
 }
 
 function createDeleteBtn(key){
-    let deleteBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button");
     deleteBtn.id = "delete-btn-"+key;
     deleteBtn.className = "delete-btn";
     deleteBtn.innerText = "X";
@@ -28,37 +27,37 @@ function createDeleteBtn(key){
 }
 
 function createEditBtn(key){
-    let editBtn = document.createElement("button");
+    const editBtn = document.createElement("button");
     editBtn.id = "edit-btn-"+key;
     editBtn.className = "edit-btn";
     const imgSource  = "https://cdn-icons-png.flaticon.com/512/84/84380.png"
-    let editImg = document.createElement("img");
+    const editImg = document.createElement("img");
     editImg.className = "edit-img";
     editImg.src = imgSource;
     editBtn.appendChild(editImg);
     editBtn.addEventListener("click", function(){
-        let parentNode = document.getElementById("todo-list-"+key);
+        const parentNode = document.getElementById("todo-list-"+key);
         editTodo(parentNode,key);
     });
     return editBtn;
 }
 
 function createLi(key,value){
-    let li = document.createElement("li");
+    const li = document.createElement("li");
     li.className = "todo-list";
     li.id = "todo-list-"+key;
 
     // make p
-    let p = document.createElement("p");
+    const p = document.createElement("p");
     p.innerText = value;
     p.id = "todo-text-"+key;
     p.className = "todo-text";
 
     // make delete-button
-    let deleteBtn = createDeleteBtn(key);
+    const deleteBtn = createDeleteBtn(key);
 
     // make edit-button
-    let editBtn = createEditBtn(key);
+    const editBtn = createEditBtn(key);
 
     li.appendChild(p);
     li.appendChild(editBtn);
@@ -67,27 +66,27 @@ function createLi(key,value){
 }
 
 function editTodo(parentNode,key){
-    let todoTextNode = document.getElementById("todo-text-"+key);
-    let backupEditBtn = document.getElementById("edit-btn-"+key);
-    let backupDeleteBtn = document.getElementById("delete-btn-"+key);
+    const todoTextNode = document.getElementById("todo-text-"+key);
+    const backupEditBtn = document.getElementById("edit-btn-"+key);
+    const backupDeleteBtn = document.getElementById("delete-btn-"+key);
     document.getElementById("edit-btn-"+key).remove();
     document.getElementById("delete-btn-"+key).remove();
     document.getElementById("todo-text-"+key).remove();
     
-    let editInput = document.createElement("input");
+    const editInput = document.createElement("input");
     editInput.value = todoTextNode.innerText;
     editInput.id = "edit-input-"+key;
     editInput.className = "edit-input";
     parentNode.appendChild(editInput);
 
     // when complete button pressed
-    let completeEditBtn = document.createElement("button");
+    const completeEditBtn = document.createElement("button");
     completeEditBtn.id = "complete-edit-btn-"+key;
     completeEditBtn.className = "complete-edit-btn";
     completeEditBtn.innerText = "수정";
 
     completeEditBtn.addEventListener("click", function(){
-        let editedTodo = editInput.value;
+        const editedTodo = editInput.value;
         localStorage.setItem(key, editedTodo);
         todoTextNode.innerText = editedTodo;
 
@@ -99,7 +98,7 @@ function editTodo(parentNode,key){
     });
     
     // when cancel button pressed
-    let cancelEditBtn = document.createElement("button");
+    const cancelEditBtn = document.createElement("button");
     cancelEditBtn.id = "cancel-edit-btn-"+key;
     cancelEditBtn.className = "cancel-edit-btn";
     cancelEditBtn.innerText = "취소";
@@ -135,7 +134,7 @@ function sortTodo() {
     try{
         valList.sort();
         
-        let todoUl = document.getElementById("todo-ul")
+        const todoUl = document.getElementById("todo-ul")
         todoUl.remove();
         addInitialUl();
         let newUl = document.getElementById("todo-ul");
@@ -166,11 +165,11 @@ function toggleVisibility() {
 
 // a function to remove default text and add ul
 function addInitialUl(){
-    let listContainer = document.getElementById("list-container");
-    let defaultText = document.getElementById("default-text");
+    const listContainer = document.getElementById("list-container");
+    const defaultText = document.getElementById("default-text");
     if(defaultText)
         defaultText.remove();
-    let initialUl = document.createElement("ul");  //parent
+    const initialUl = document.createElement("ul");  //parent
     initialUl.id = "todo-ul";
     initialUl.className = "todo-ul";
     listContainer.appendChild(initialUl);
@@ -182,10 +181,11 @@ function deleteTodo(index){
     
     // when the last todo is removed, remove ul and add default text.
     if(localStorage.length === 1){
-        let listContainer = document.getElementById("list-container");
-        let ul = document.getElementById("todo-ul");
+        const listContainer = document.getElementById("list-container");
+        const ul = document.getElementById("todo-ul");
         ul.remove();
-        let defaultText = document.createElement("p");
+
+        const defaultText = document.createElement("p");
         defaultText.innerText = "남은 일정이 없어요";
         defaultText.id = "default-text";
         defaultText.className = "default-text";
@@ -198,11 +198,11 @@ function addTodo() {
     if(localStorage.length === 1)
         addInitialUl()
 
-    let ul = document.getElementById("todo-ul");  //parent
+    const ul = document.getElementById("todo-ul");  //parent
 
     // get what users write
-    let todoInput = document.getElementById("todo-input");
-    let value = todoInput.value;
+    const todoInput = document.getElementById("todo-input");
+    const value = todoInput.value;
     const btnIndex = parseInt(localStorage.getItem("cnt"));
     localStorage.setItem(btnIndex,value);
 
@@ -213,7 +213,7 @@ function addTodo() {
 }
 
 function clearInput(targetId) {
-    let input = document.getElementById(targetId);
+    const input = document.getElementById(targetId);
     input.value = "";
 }
 
