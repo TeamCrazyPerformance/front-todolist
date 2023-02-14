@@ -123,7 +123,7 @@ function clearEditElements(key){
 }
 
 function sortTodo() {
-    valList = [];
+    let valList = [];
 
     for (const key in localStorage){
         if(localStorage.getItem(key)==null || key === "cnt")
@@ -148,7 +148,7 @@ function sortTodo() {
         localStorage.setItem("cnt", i);
     }
     catch(e){
-        console.error("Error: Todolist is empty!")
+        alert("Error: Todolist is empty!")
     }
 
 }
