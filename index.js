@@ -132,7 +132,7 @@ function sortTodo() {
     }
 
     try{
-        valList.sort();
+        valList.reverse()
         
         const todoUl = document.getElementById("todo-ul")
         todoUl.remove();
