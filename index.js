@@ -1,5 +1,3 @@
-localStorage.setItem("cnt",0);
-
 function main (){
     if (localStorage.length > 1){
         addInitialUl();
@@ -12,6 +10,8 @@ function main (){
             ul.appendChild(createLi(key,val));
         }
     }
+    else
+        localStorage.setItem("cnt",0);
 }
 
 function createDeleteBtn(key){
@@ -125,8 +125,8 @@ function clearEditElements(key){
 function sortTodo() {
     let valList = [];
 
-    for (const key in localStorage){
-        if(localStorage.getItem(key)==null || key === "cnt")
+    for(let key in localStorage) {
+        if(localStorage.getItem(key) === null || key === "cnt")
             continue
         valList.push(localStorage.getItem(key))
     }
