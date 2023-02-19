@@ -150,7 +150,6 @@ main {
     display: none;
 }
 
-
 .no-schedule-section__text {
     font-weight: 700;
     font-size: 24px;
@@ -174,7 +173,7 @@ li {
     align-items: center;
 }
 
-.list_edit_button, .list_delete_button {
+.schedule-list__button {
     width: 14.3px;
     height: 14.3px;
     border: none;
@@ -184,20 +183,20 @@ li {
     background-repeat: no-repeat;
 }
 
-.list_delete_button {
+.schedule-list__delete-button {
     background-image: url('./image/delete_btn.png');
     margin-left: 12px;
 }
 
-.list_edit_button {
+.schedule-list__edit-button {
     background-image: url('./image/edit_vector.svg');
 }
 
-.list_button_container {
+.schedule-list__button-container {
     display: flex;
 }
 
-li>span {
+.schedule-list__schedule-name {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -206,7 +205,18 @@ li>span {
     color: #000000;
 }
 
-.edit_input {
+.schedule-list__schedule-name--edit {
     flex: auto;
     margin-right: 25px;
+}
+
+.schedule-list__edit-button--edit, .schedule-list__cancel-button--edit {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    box-sizing: border-box;
+    width: 55px;
+    background: #000000;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
 }

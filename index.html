@@ -41,8 +41,31 @@
       </ul>
     </section>
   </main>
+
+  <template id="schedule-list-section__template--view">
+    <li class="schedule-list-section__li">
+      <span class="schedule-list__schedule-name"></span>
+      <div class="schedule-list__button-container">
+        <button class="schedule-list__button schedule-list__edit-button"></button>
+        <button class="schedule-list__button schedule-list__delete-button"></button>
+      </div>
+    </li>
+  </template>
+
+  <template id="schedule-list-section__template--edit">
+    <li class="schedule-list-section__li">
+      <input class="schedule-list__schedule-name schedule-list__schedule-name--edit"></input>
+      <div class="schedule-list__button-container">
+        <button class="schedule-list__edit-button--edit">
+          <span>수정</span>
+        </button>
+        <button class="schedule-list__cancel-button--edit">
+          <span>취소</span>
+        </button>
+      </div>
+    </li>
+  </template>
 </body>
 
 <script src="script.js"></script>
-
 </html>

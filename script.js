@@ -10,13 +10,14 @@ const newScheduleInput = document.getElementById("sub-header__input");
 const noScheduleContainer = document.getElementById("no-schedule-section");
 const scheduleListContainer = document.getElementById("schedule-list-section");
 const ul = document.querySelector("ul");
+const view = document.querySelector('#schedule-list-section__template--view');
+const edit = document.querySelector('#schedule-list-section__template--edit')
 
 let scheduleArray;
 let isScheduleExist;
 
 window.onload = function() {
     scheduleArray = localStorage.getItem("scheduleArray").length === 0? [] : JSON.parse(localStorage.getItem("scheduleArray"));
-    //scheduleArray = scheduleArray.filter(schedule => schedule !== "");
     updateLocalStorage();
     removeScheduleDisplay();
     drawScheduleDisplay();
@@ -25,8 +26,6 @@ window.onload = function() {
 function updateLocalStorage() {
     localStorage.removeItem("scheduleArray");
     localStorage.setItem("scheduleArray", JSON.stringify(scheduleArray));
-    console.log(scheduleArray);
-    console.log(typeof(scheduleArray));
 }
 
 function getSubHeader() {
@@ -71,66 +70,48 @@ function addSchedule(addedScheduleName) {
     addScheduleUI(addedScheduleName);
 }
 
-function changeViewEditMode(viewModeElement, editModeElement, mode) {
-    if (mode === VIEW_MODE) {
-        for (let i = 0; i < viewModeElement.length; i++) {
-            editModeElement[i].replaceWith(viewModeElement[i]);
-        }
-    } else if (mode === EDIT_MODE) {
-        for (let i = 0; i < viewModeElement.length; i++) {
-            viewModeElement[i].replaceWith(editModeElement[i]);
-        }
-    }
+function getScheduleEditMode(addedScheduleName) {
+    const viewUI = document.getElementById(addedScheduleName);
+    viewUI.replaceWith(createEditScheduleUI(addedScheduleName));
 }
 
-function addScheduleUI(addedScheduleName) {
-    const scheduleContainer = document.createElement('li');
-    const scheduleName = document.createElement('span');
-    const scheduleDeleteButton = document.createElement('button');
-    const scheduleEditButton = document.createElement('button');
-    const scheduleButtonContainer = document.createElement('div');
-    const editInput = document.createElement('input');
-    const editCancelButton = document.createElement('button');
-    const editCompleteButton = document.createElement('button');
+function getScheduleViewMode(addedScheduleName, editedScheduleName) {
+    const editUI = document.getElementById(addedScheduleName);
+    editUI.replaceWith(createScheduleLiUI(editedScheduleName));
+}
 
-    scheduleName.innerText = addedScheduleName;
-    scheduleContainer.id = addedScheduleName;
-    scheduleDeleteButton.className = "list_delete_button";
-    scheduleEditButton.className = "list_edit_button";
-    scheduleButtonContainer.className = "list_button_container";
-    editInput.value = addedScheduleName;
-    editCancelButton.innerHTML = "<span>취소</span>";
-    editCompleteButton.innerHTML = "<span>수정</span>";
-    editInput.className = "edit_input";
-    editCancelButton.className = "black_text_button";
-    editCompleteButton.className = "black_text_button";
+function createScheduleLiUI(addedScheduleName) {
+    const viewUI = document.importNode(view.content, true);
+    viewUI.querySelector('.schedule-list-section__li').id = addedScheduleName;
+    viewUI.querySelector('.schedule-list__schedule-name').innerText = addedScheduleName;
 
-    scheduleContainer.appendChild(scheduleName);
-    scheduleButtonContainer.appendChild(scheduleEditButton);
-    scheduleButtonContainer.appendChild(scheduleDeleteButton);
-    scheduleContainer.appendChild(scheduleButtonContainer);
-    ul.appendChild(scheduleContainer);
-
-    const viewModeElement = [scheduleName, scheduleEditButton, scheduleDeleteButton];
-    const editModeElement = [editInput, editCompleteButton, editCancelButton];
-
-    scheduleDeleteButton.addEventListener("click", function() {
+    viewUI.querySelector('.schedule-list__delete-button').addEventListener("click", function() {
         scheduleArray = scheduleArray.filter(schedule => !checkScheduleExist(schedule, addedScheduleName));
         updateLocalStorage();
-        scheduleContainer.remove();
-        changeContainerStyle();
+        removeScheduleDisplay();
+        drawScheduleDisplay();
     });
 
-    scheduleEditButton.addEventListener("click", function() {
-        changeViewEditMode(viewModeElement, editModeElement, EDIT_MODE);
+    viewUI.querySelector('.schedule-list__edit-button').addEventListener("click", function() {
+        getScheduleEditMode(addedScheduleName);
     });
 
-    editCancelButton.addEventListener("click", function() {
-        changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
+    return viewUI;
+}
+
+function createEditScheduleUI(addedScheduleName) {
+    const editUI = document.importNode(edit.content, true);
+    const editUIInput = editUI.querySelector('input');
+    editUIInput.value = addedScheduleName;
+    const editUILi = editUI.querySelector('.schedule-list-section__li');
+    editUILi.id = addedScheduleName;
+
+    editUI.querySelector('.schedule-list__cancel-button--edit').addEventListener("click", function() {
+        getScheduleViewMode(addedScheduleName, addedScheduleName);
     });
 
-    editCompleteButton.addEventListener("click", function() {
-        const editedScheduleName = editInput.value;
+    editUI.querySelector('.schedule-list__edit-button--edit').addEventListener("click", function() {
+        const editedScheduleName = editUIInput.value;
 
         if (editedScheduleName.length === 0) {
             window.alert("스케줄 이름을 입력해주세요");
@@ -141,11 +122,17 @@ function addScheduleUI(addedScheduleName) {
         } else {
             scheduleArray = scheduleArray.map(schedule => schedule === addedScheduleName? editedScheduleName : schedule);
             updateLocalStorage();
-            changeViewEditMode(viewModeElement, editModeElement, VIEW_MODE);
-            removeScheduleDisplay();
-            drawScheduleDisplay();
+            getScheduleViewMode(addedScheduleName, editedScheduleName);
         }
     });
+
+    return editUI;
+}
+
+function addScheduleUI(addedScheduleName) {
+    const viewUI = createScheduleLiUI(addedScheduleName);
+    ul.appendChild(viewUI);
+    createEditScheduleUI(addedScheduleName);
 }
 
 function clearNewScheduleInput() {
