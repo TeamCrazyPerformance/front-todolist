@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <script defer src="index.js"></script>
     <title>To Do List</title>
   </head>
 
@@ -11,9 +11,14 @@
       <div class="header">
         <div class="title">
           <h1>TODO LIST</h1>
-          <button class="add-btn" onclick="toggleVisibility()">
-            +
-          </button>
+          <div class="btn-container">
+            <button class="btn-in-header" id="sort-btn" onclick="sortTodo()">
+              <img class="sort-img" src="https://icon2.cleanpng.com/20180715/vj/kisspng-computer-icons-encapsulated-postscript-sort-icon-5b4ba9b9919288.9936313215316853055963.jpg">
+            </button>
+            <button class="btn-in-header" id="add-btn" onclick="toggleVisibility()">
+              +
+            </button>
+          </div>
         </div>
         <div id="add-todo" class="add-todo" style="display: none;">
           <p>새로운 일정</p>
