@@ -1,0 +1,69 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200&display=swap");
+
+html, body {
+    height: 100%;
+}
+
+.box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+#todo-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#empty-notice {
+    margin: auto;
+    font-weight: 600;
+    font-size: 50px;
+    color: #C2C2C2;
+}
+
+.todo {
+    display: flex;
+    height: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-style: solid;
+    border-width: 0 0 1px;
+    border-Bottom-color: #2C2C2C;
+}
+
+.todo-text {
+    font-size: 20px;
+}
+
+.todo-btn-group {
+    height: 100%;
+}
+
+.todo-btn {
+    height: 100%;
+    background: #FFFFFF;
+}
+
+.todo-btn img {
+    max-height: 100%;
+}
+
+#new-todo {
+    padding-bottom: 10px;
+}
+
+.edit-btn-group button {
+    color: white;
+    background: black;
+    border-radius: 10%;
+}

@@ -1,0 +1,72 @@
+#head {
+    position: sticky;
+    top: 0;
+    background: black;
+    color: #FFFFFF;
+}
+
+.todo-logo {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container {
+    height: 40px;
+    padding: 20px 20px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header-btn-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px
+}
+
+#header-btn-group button {
+    width: 30px;
+    height: 30px;
+    padding: 0
+}
+
+#header-btn-group button img {
+    max-width: 100%;
+    max-height: 100%;
+    border: solid;
+    border-radius: 50%;
+    color: white;
+}
+
+#todo-form {
+    margin: 0 2%;
+    font-weight: bold;
+    display: none;
+}
+
+#plus-button {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.input-line {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-cancel-btn {
+    margin-left: 5px;
+    border: 1px solid white;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
