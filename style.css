@@ -26,79 +26,86 @@ button {
     cursor: pointer;
 }
 
-.top_container {
-    width: 100%;
+.main-header {
     max-height: 46px;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 12px 10px 11px;
 }
 
-.logo {
+.main-header__title {
     display: inline-block;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
     height: calc(100% - 18px);
-    margin: 9px 15px;
 }
 
-.plus_span {
-    font-weight: 300;
-    font-size: 36px;
-    line-height: 44px;
-    position: fixed;
-    top: -2px;
-    right: 12px;
-}
-
-#plus_button {
+.main-header__button {
     width: 27px;
     height: 27px;
     border: 1px solid #FFFFFF;
     border-radius: 50%;
     background-color: transparent;
-    position: fixed;
-    top: 9px;
-    right: 11px;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    display: inline;
 }
 
-#new_schedule_input_container {
+.main-header__button--hide {
+    display: none;
+}
+
+#plus_button {
+    background-image: url('./image/plus_btn.png');
+}
+
+#align_button {
+    background-image: url('./image/align_vector.svg');
+}
+
+#sub-header {
     width: 100%;
     height: 75px;
-    display: none;
     background: #2C2C2C;
 }
 
-.new_schedule_input_label,
-.new_schedule_input_button {
+.sub-header--show {
+    display: block;
+}
+
+.sub-header--hide {
+    display: none;
+}
+
+.sub-header__label,
+.sub-header__button {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
 }
 
-.new_schedule_input_label {
+.sub-header__label {
     padding: 4px 0px 0px 11px;
 }
 
-.input_and_buttons_container {
+.sub-header__content {
     display: flex;
     padding: 12px 15px 15px 11px;
 }
 
-#new_schedule_input {
+#sub-header__input {
     height: 25px;
     flex: auto;
     background: #F5F5F5;
     margin-right: 20px;
 }
 
-.new_schedule_input_button_container {
-    display: flex;
-}
-
-.new_schedule_input_button {
+.sub-header__button {
     box-sizing: border-box;
     width: 55px;
-    background: #2C2C2C;
+    background: #000000;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
 }
@@ -113,23 +120,37 @@ main {
     height: calc(100vh - 46px - 75px);
 }
 
-#no_schedule_container {
-    flex: 1;
-    display: flex;
+#no-schedule-section {
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
-#schedule_list_container {
-    flex: 0;
+.no-schedule-section--show {
     display: flex;
+}
+
+.no-schedule-section--hide {
+    display: none;
+}
+
+#schedule-list-section {
+    flex: 1;
     justify-content: flex-start;
     flex-direction: column;
     overflow: auto;
     overflow-x: hidden;
 }
 
-.no_schedule_span {
+.schedule-list-section--show {
+    display: flex;
+}
+
+.schedule-list-section--hide {
+    display: none;
+}
+
+.no-schedule-section__text {
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
@@ -142,26 +163,60 @@ ul {
 }
 
 li {
-    width: 100vw;
+    width: 100%;
     padding: 24px 17px 24px 11px;
     border-bottom: 1px solid #DEDEDE;
     box-sizing: border-box;
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-li>button {
+.schedule-list__button {
+    width: 14.3px;
+    height: 14.3px;
     border: none;
     background-color: transparent;
-    padding: 0;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-li>span, li>button {
+.schedule-list__delete-button {
+    background-image: url('./image/delete_btn.png');
+    margin-left: 12px;
+}
+
+.schedule-list__edit-button {
+    background-image: url('./image/edit_vector.svg');
+}
+
+.schedule-list__button-container {
+    display: flex;
+}
+
+.schedule-list__schedule-name {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
     color: #000000;
+}
+
+.schedule-list__schedule-name--edit {
+    flex: auto;
+    margin-right: 25px;
+}
+
+.schedule-list__edit-button--edit, .schedule-list__cancel-button--edit {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    box-sizing: border-box;
+    width: 55px;
+    background: #000000;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
 }

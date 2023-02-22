@@ -1,100 +1,166 @@
-const PADDING_WITH_SCROLL = "34px";
-const PADDING_WITH_NO_SCROLL = "17px";
+const VIEW_MODE = "view_mode";
+const EDIT_MODE = "edit_mode";
 
 const plusButton = document.getElementById("plus_button");
-const newScheduleInputContainer = document.getElementById("new_schedule_input_container");
+const alignButton = document.getElementById("align_button");
+const subHeader = document.getElementById("sub-header");
 const addInputButton = document.getElementById("add_input_button");
 const cancelInputButton = document.getElementById("cancel_input_button");
-const newScheduleInput = document.getElementById("new_schedule_input");
-const noScheduleContainer = document.getElementById("no_schedule_container");
-const scheduleListContainer = document.getElementById("schedule_list_container");
+const newScheduleInput = document.getElementById("sub-header__input");
+const noScheduleContainer = document.getElementById("no-schedule-section");
+const scheduleListContainer = document.getElementById("schedule-list-section");
 const ul = document.querySelector("ul");
+const view = document.querySelector('#schedule-list-section__template--view');
+const edit = document.querySelector('#schedule-list-section__template--edit')
 
-let scheduleArray = [];
+let scheduleArray;
 let isScheduleExist;
 
-function checkScroll() {
-    const lis = document.getElementsByTagName("Li");
-
-    if (scheduleListContainer.scrollHeight > scheduleListContainer.clientHeight) {
-        Array.from(lis).forEach(li => {
-            li.style.paddingRight = PADDING_WITH_SCROLL;
-        });
-    } else {
-        Array.from(lis).forEach(li => {
-            li.style.paddingRight = PADDING_WITH_NO_SCROLL;
-        });
-    }
+window.onload = function() {
+    scheduleArray = localStorage.getItem("scheduleArray").length === 0? [] : JSON.parse(localStorage.getItem("scheduleArray"));
+    updateLocalStorage();
+    removeScheduleDisplay();
+    drawScheduleDisplay();
 }
 
-function demandNewScheduleInputContainer() {
-    newScheduleInputContainer.style.display = 'block';
-    plusButton.style.display = "none";
-    checkScroll();
+function updateLocalStorage() {
+    localStorage.removeItem("scheduleArray");
+    localStorage.setItem("scheduleArray", JSON.stringify(scheduleArray));
 }
 
-function revertNewScheduleInputContainer() {
-    newScheduleInputContainer.style.display = "none";
-    plusButton.style.display = 'inline';
-    checkScroll();
+function getSubHeader() {
+    subHeader.className = "sub-header--show";
+    plusButton.classList.toggle("main-header__button--hide");
+    alignButton.classList.toggle("main-header__button--hide");
 }
 
-function demandScheduleListContainer() {
-    scheduleListContainer.style.display = 'flex';
-    scheduleListContainer.style.flex = 1;
-    noScheduleContainer.style.display = 'none';
+function hideSubHeader() {
+    subHeader.className = "sub-header--hide";
+    plusButton.classList.toggle("main-header__button--hide");
+    alignButton.classList.toggle("main-header__button--hide");
 }
 
-function demandNoScheduleListContainer() {
-    noScheduleContainer.style.display = 'flex';
-    noScheduleContainer.style.flex = 1;
-    scheduleListContainer.style.display = 'none';
+function getScheduleListContainer() {
+    scheduleListContainer.className = "schedule-list-section--show";
+    noScheduleContainer.className = "no-schedule-section--hide";
+}
+
+function getNoScheduleListContainer() {
+    scheduleListContainer.className = "schedule-list-section--hide";
+    noScheduleContainer.className = "no-schedule-section--show";
+}
+
+function checkScheduleExist(schedule, addedScheduleName) {
+    return schedule === addedScheduleName;
 }
 
 function changeContainerStyle() {
     isScheduleExist = (scheduleArray.length > 0);
 
     if (isScheduleExist) {
-        demandScheduleListContainer();
+        getScheduleListContainer();
     } else {
-        demandNoScheduleListContainer();
+        getNoScheduleListContainer();
     }
 }
 
 function addSchedule(addedScheduleName) {
     scheduleArray.push(addedScheduleName);
+    updateLocalStorage();
     addScheduleUI(addedScheduleName);
 }
 
-function addScheduleUI(addedScheduleName) {
-    const scheduleContainer = document.createElement('li');
-    const scheduleName = document.createElement('span');
-    const scheduleDeleteButton = document.createElement('button');
+function getScheduleEditMode(addedScheduleName) {
+    const viewUI = document.getElementById(addedScheduleName);
+    viewUI.replaceWith(createEditScheduleUI(addedScheduleName));
+}
 
-    scheduleName.innerText = addedScheduleName;
-    scheduleContainer.id = addedScheduleName;
-    scheduleDeleteButton.innerText = "x";
+function getScheduleViewMode(addedScheduleName, editedScheduleName) {
+    const editUI = document.getElementById(addedScheduleName);
+    editUI.replaceWith(createScheduleLiUI(editedScheduleName));
+}
 
-    scheduleContainer.appendChild(scheduleName);
-    scheduleContainer.appendChild(scheduleDeleteButton);
-    ul.appendChild(scheduleContainer);
+function createScheduleLiUI(addedScheduleName) {
+    const viewUI = document.importNode(view.content, true);
+    viewUI.querySelector('.schedule-list-section__li').id = addedScheduleName;
+    viewUI.querySelector('.schedule-list__schedule-name').innerText = addedScheduleName;
 
-    checkScroll();
-
-    scheduleDeleteButton.addEventListener("click", function () {
-        scheduleArray = scheduleArray.filter((schedule) => schedule !== addedScheduleName);
-        scheduleContainer.remove();
-        changeContainerStyle();
-        checkScroll();
+    viewUI.querySelector('.schedule-list__delete-button').addEventListener("click", function() {
+        scheduleArray = scheduleArray.filter(schedule => !checkScheduleExist(schedule, addedScheduleName));
+        updateLocalStorage();
+        removeScheduleDisplay();
+        drawScheduleDisplay();
     });
+
+    viewUI.querySelector('.schedule-list__edit-button').addEventListener("click", function() {
+        getScheduleEditMode(addedScheduleName);
+    });
+
+    return viewUI;
+}
+
+function createEditScheduleUI(addedScheduleName) {
+    const editUI = document.importNode(edit.content, true);
+    const editUIInput = editUI.querySelector('input');
+    editUIInput.value = addedScheduleName;
+    const editUILi = editUI.querySelector('.schedule-list-section__li');
+    editUILi.id = addedScheduleName;
+
+    editUI.querySelector('.schedule-list__cancel-button--edit').addEventListener("click", function() {
+        getScheduleViewMode(addedScheduleName, addedScheduleName);
+    });
+
+    editUI.querySelector('.schedule-list__edit-button--edit').addEventListener("click", function() {
+        const editedScheduleName = editUIInput.value;
+
+        if (editedScheduleName.length === 0) {
+            window.alert("스케줄 이름을 입력해주세요");
+        } else if (addedScheduleName === editedScheduleName) {
+            window.alert("스케줄 변경이 없습니다. 스케줄 변경을 취소하시려면 취소 버튼을 눌러주세요.");
+         }else if (scheduleArray.some(schedule => checkScheduleExist(schedule, editedScheduleName))) {
+            window.alert("이미 존재하는 스케줄입니다");
+        } else {
+            scheduleArray = scheduleArray.map(schedule => schedule === addedScheduleName? editedScheduleName : schedule);
+            updateLocalStorage();
+            getScheduleViewMode(addedScheduleName, editedScheduleName);
+        }
+    });
+
+    return editUI;
+}
+
+function addScheduleUI(addedScheduleName) {
+    const viewUI = createScheduleLiUI(addedScheduleName);
+    ul.appendChild(viewUI);
+    createEditScheduleUI(addedScheduleName);
 }
 
 function clearNewScheduleInput() {
     newScheduleInput.value = null;
 }
 
+function removeScheduleDisplay() {
+    while (ul.firstChild) {
+        ul.removeChild(ul.firstChild);
+    }
+}
+
+function drawScheduleDisplay() {
+    changeContainerStyle();
+    scheduleArray.forEach(schedule => {
+        addScheduleUI(schedule);
+    });   
+}
+
 plusButton.addEventListener("click", function () {
-    demandNewScheduleInputContainer();
+    getSubHeader();
+});
+
+alignButton.addEventListener("click", function() {
+    scheduleArray.reverse();
+    updateLocalStorage();
+    removeScheduleDisplay();
+    drawScheduleDisplay();
 });
 
 addInputButton.addEventListener("click", function () {
@@ -103,18 +169,16 @@ addInputButton.addEventListener("click", function () {
 
     if (addedScheduleName.length === 0) {
         window.alert("스케줄 이름을 입력해주세요");
-        return;
-    } else if (scheduleArray.some((schedule) => schedule === addedScheduleName)) {
+    } else if (scheduleArray.some(schedule => checkScheduleExist(schedule, addedScheduleName))) {
         window.alert("이미 존재하는 스케줄입니다");
     } else {
         addSchedule(addedScheduleName);
         changeContainerStyle();
+        hideSubHeader();
     }
-
-    revertNewScheduleInputContainer();
 });
 
 cancelInputButton.addEventListener("click", function () {
     clearNewScheduleInput();
-    revertNewScheduleInputContainer();
+    hideSubHeader();
 });
